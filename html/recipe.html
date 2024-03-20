@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>인기 레시피</title>
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="./js/main.js"></script>
+  <!-- Favicon -->
+  <link rel="icon" href="/images/common/favicon.ico">
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    /* Reset */
+    body,
+    header,
+    main,
+    footer,
+    section,
+    nav,
+    div,
+    h1,
+    h2,
+    h3,
+    p,
+    ul,
+    li,
+    dl,
+    dt,
+    dd,
+    form,
+    fieldset,
+    legend,
+    input,
+    button {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    address {
+      font-style: normal;
+    }
+
+    fieldset,
+    img {
+      border: none;
+    }
+
+    img {
+      vertical-align: bottom;
+      border: none;
+    }
+
+    input,
+    button {
+      vertical-align: center;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .hide {
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden;
+      margin: -1px;
+      border: 0 none !important;
+      text-indent: -9999px;
+      position: absolute;
+    }
+
+    /* Color */
+    :root {
+      --color-ottogi-yellow: var(--color-yellow);
+      --color-ottogi-red: var(--color-red);
+      --color-ottogi-blue: var(--color-blue);
+      --color-title: var(--color-title);
+      --color-content: var(--color-content);
+      --color-border: var(--color-border);
+
+      /* Colors */
+      --color-yellow: rgb(255, 243, 0);
+      --color-red: rgb(211, 35, 58);
+      --color-blue: rgb(10, 48, 158);
+      --color-title: #333333;
+      --color-content: #222222;
+      --color-border: #e5e5e5;
+    }
+
+
+    /* Skip Menu
+    .skipMenu {
+      width: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0;
+      z-index: 9999;
+    }*/
+
+    /* Layout */
+    html,
+    body {
+      scroll-behavior: smooth;
+      font-family: 'Nanum Gothic', sans-serif;
+    }
+
+    .header_wrap {
+      width: 100%;
+      height: 180px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: url(/images/main/wave-haikei.svg);
+    }
+
+    .header_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      padding-right: 60px;
+      /* background: red; */
+    }
+
+    .main {
+      width: 100%;
+      position: relative;
+    }
+
+    .footer {
+      height: 176px;
+      background-color: #fff;
+      position: relative;
+    }
+
+
+    /* Header */
+    .header_all_wrap {
+      position: relative;
+    }
+
+    .header_nav>ul>li>a {
+      text-decoration: none;
+      color: black;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all ease-in 0.3s;
+    }
+
+    .header_nav>ul>li>a:hover {
+      color: #DF2D32;
+    }
+
+    .header_nav>ul>li>ul>li>a {
+      text-decoration: none;
+      color: rgb(82, 82, 82);
+      font-size: 15px;
+    }
+
+    .header_nav>ul>li>ul>li>a:hover {
+      color: #DC2F34;
+      font-weight: bold;
+      border-bottom: 2px solid #DC2F34;
+    }
+
+    .ottugi_title {
+      margin-left: 60px;
+    }
+
+    .ottugi_title h1 {
+      text-indent: -9999px;
+    }
+
+    .ottugi_title img {
+      width: 70px;
+    }
+
+    .header_nav ul ul {
+      position: absolute;
+      top: 110px;
+      height: 460px;
+      display: none;
+      /* background: linear-gradient(0deg, rgba(150, 152, 124, 1) 0%, rgba(255, 242, 0, 1) 46%, rgba(254, 241, 0, 1) 99%); */
+      z-index: 4100;
+    }
+
+    .header_nav>ul {
+      height: 80px;
+      display: flex;
+      margin: 50px 0 0 0;
+      justify-content: space-between;
+      align-items: center;
+      /* background: blue; */
+    }
+
+    .header_nav>ul>li {
+      font-size: 20px;
+      /* height: 60px; */
+      line-height: 40px;
+      padding-right: 60px;
+      /* background: green; */
+    }
+
+    .lang_menu_btn {
+      position: absolute;
+      top: 75px;
+      right: -50px;
+    }
+
+    .lang_menu_btn img {
+      width: 30px;
+    }
+
+    /* 토글 버튼 */
+    .toggle_btn {
+      display: none;
+    }
+
+    .lang {
+      position: absolute;
+      background: #fff;
+      text-align: center;
+      padding: 5px;
+      top: 110px;
+      right: -100px;
+      display: none;
+      border: 1px solid #b8b8b8;
+      border-radius: 10px;
+      z-index: 9999;
+    }
+
+    .lang_down a {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .lang_list {
+      position: absolute;
+      background: #dbdbdb;
+      top: 0px;
+      right: -55px;
+      height: 90px;
+      padding: 10px;
+      display: none;
+      border: 1px solid #b8b8b8;
+      border-radius: 10px;
+      z-index: 4000;
+    }
+
+    .lang_list p {
+      margin-bottom: 5px;
+    }
+
+    .lang_list p:hover {
+      font-weight: bold;
+    }
+
+    .lang_down,
+    .ottugi_search,
+    .ottugi_chat,
+    .ottugi_mall {
+      padding: 8px;
+    }
+
+    .ottugi_mall {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .ottugi_mall img {
+      width: 95px;
+    }
+
+    .nav_bg {
+      position: absolute;
+      top: 170px;
+      left: 0;
+      width: 100%;
+      height: 450px;
+      background: linear-gradient(0deg, rgba(150, 152, 124, 1) 0%, rgba(255, 242, 0, 1) 46%, rgba(254, 241, 0, 1) 99%);
+      display: none;
+      z-index: 4000;
+    }
+
+    /* Main - Banner */
+    .main_banner {
+      width: 100%;
+      min-width: 1280px;
+      height: 400px;
+      padding: 0 0 24px;
+      background: url(/images/customer/img_banner.png) no-repeat;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      clear: both;
+    }
+
+    .main_banner .popular_recipe {
+      color: var(--color-content);
+      font-size: 45px;
+      line-height: 45px;
+      text-align: center;
+      display: block;
+      padding: 48px 0;
+    }
+
+    .main_banner .hashTag li {
+      display: inline-block;
+      margin: 5px 2px;
+      min-height: 40px;
+    }
+
+    .main_banner .hashTag a {
+      color: #777777;
+      font-size: 20px;
+      line-height: 25px;
+      padding: 5px 20px 7px;
+      border: 2px solid var(--color-border);
+      border-radius: 50px;
+      background: #fff;
+      text-align: center;
+    }
+
+    /* Main - 이번 주 인기 레시피 */
+    .topHot {
+      width: 100%;
+      padding: 60px 0;
+      background-color: #fafafa;
+    }
+
+    .topHot_wrap {
+      width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .topHot_title {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 20px;
+      color: #666666;
+    }
+
+    .topHot_title h3 {
+      font-size: 50px;
+      font-weight: 800;
+      color: var(--color-title);
+    }
+
+    .topHot_title h3 span {
+      color: var(--color-ottogi-red);
+    }
+
+    .topHot_content {
+      width: 50%;
+      display: flex;
+      gap: 2%;
+    }
+
+    .topHot_content .topHot_item {
+      position: relative;
+      width: 50%;
+      padding: 16px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      background-color: white;
+    }
+
+    .topHot_content .topHot_item img {
+      width: 100%;
+      margin-bottom: 24px;
+      border-radius: 20px;
+    }
+
+    .topHot_item .info_title>a {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .topHot_item>.info>.info_title {
+      background: url(/images/product/btn_detail_view.svg) no-repeat;
+      background-position: top 2px right 148px;
+      transform-origin: center;
+    }
+
+    /* Main - 레시피 구분 탭 */
+    .recipe_tab {
+      width: 100%;
+      position: relative;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 3px solid var(--color-border);
+    }
+
+    .recipe_tab ul {
+      width: 1280px;
+      height: 75px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 1px solid var(--color-border);
+      border-right: 1px solid var(--color-border);
+    }
+
+    .recipe_tab ul li {
+      width: 10%;
+      min-width: 120px;
+    }
+
+    .recipe_tab ul li:active {
+      border-bottom: 5px solid var(--color-ottogi-red);
+    }
+
+    .recipe_tab ul li a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 16px;
+      line-height: 75px;
+      text-align: center;
+      color: var(--color-content);
+    }
+
+    /* Main - 검색창 */
+    .search_area {
+      width: 1280px;
+      padding: 10px 0 10px 762px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #topform {
+      position: relative;
+    }
+
+    .search_area input {
+      width: 400px;
+      height: 50px;
+      padding: 10px 50px 10px 20px;
+      box-sizing: border-box;
+      border: 1px solid #eaeaea;
+      border-radius: 10px;
+      background-color: #fafafa;
+      position: relative;
+    }
+
+    .search_area img {
+      width: 24px;
+      height: auto;
+      position: absolute;
+      top: 13px;
+      right: 116px;
+    }
+
+    .search_area button {
+      width: 80px;
+      height: 50px;
+      box-sizing: border-box;
+      border: 0 none;
+      border-radius: 10px;
+      background-color: black;
+      color: #fff;
+    }
+
+    /* Main - 검색 결과 조회 */
+    .hits {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1280px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .hits p {
+      color: var(--color-content);
+    }
+
+    .hits strong {
+      font-size: 18px;
+      color: var(--color-ottogi-red);
+    }
+
+    .sort_list li {
+      float: left;
+      padding: 0 10px;
+    }
+
+    .sort_list a {
+      color: var(--color-content);
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    /* Main - 인기 레시피 리스트 */
+    .recipe_list {
+      width: 1280px;
+      margin: 0 auto 120px;
+      position: relative;
+    }
+
+    .recipe_list .list_area {
+      width: 100%;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .recipe_list .item {
+      width: 312px;
+      min-height: 300px;
+      padding: 16px;
+      box-sizing: border-box;
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      float: left;
+      vertical-align: top;
+    }
+
+    /* Main - 레시피 - 추천/인기 아이콘 */
+    .recipe_list .thmb {
+      position: relative;
+      width: 100%;
+    }
+
+    .recipe_list .thmb .icon {
+      width: 80%;
+      height: 48px;
+      position: absolute;
+      right: 18px;
+      bottom: 12px;
+      z-index: 2;
+      text-align: right;
+    }
+
+    .recipe_list .thmb .icon i {
+      width: 48px;
+      height: 48px;
+      background: url(./images/icon_dm_best.png) no-repeat;
+      content: "";
+      display: inline-block;
+      font-size: 0;
+      margin-left: 7px;
+    }
+
+    .non_active a {
+      color: rgb(157, 157, 157)
+    }
+
+    .thmb .icon .icon_dm {
+      background-position: top;
+    }
+
+    .thmb .icon .icon_best {
+      background-position: bottom !important;
+    }
+
+    /* Main - 레시피 - 음식 사진 */
+    .recipe_list .item .img {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .recipe_list .item .scale {
+      width: 278px;
+      height: 196px;
+      margin-bottom: 10px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .recipe_list .item img {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    /* Main - 레시피 - 레시피 정보 */
+    .recipe_list .info {
+      padding: 8px 0;
+      color: #666666;
+    }
+
+    .recipe_list .info .info_tag {
+      font-size: 14px;
+      min-height: 25px;
+    }
+
+    .info_tag span {
+      margin-right: 8px;
+    }
+
+    .recipe_list .info .info_title {
+      margin-bottom: 6px;
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--color-content);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .info_top {
+      display: flex;
+      font-size: 14px;
+      color: #999999;
+      margin-bottom: 16px;
+    }
+
+    .info_top .count::after {
+      content: "･";
+      margin: 0 5px;
+    }
+
+    .info_bottom .ibBtn.like {
+      color: var(--color-title);
+      font-size: 12px;
+      text-align: center;
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 10px 0 30px;
+      margin-right: 10px;
+      box-sizing: border-box;
+      border: 1px solid #eaeaea;
+      border-radius: 20px;
+      background: url(/images/product/icon_like.png) no-repeat;
+      background-size: auto;
+      background-position: top 7px left 10px;
+      cursor: pointer;
+    }
+
+    .info_bottom .ibBtn.like02 {
+      color: var(--color-title);
+      font-size: 12px;
+      text-align: center;
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 10px 0 30px;
+      margin-right: 10px;
+      box-sizing: border-box;
+      border: 1px solid #eaeaea;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+      color: red;
+      font-size: 14px;
+      position: absolute;
+      left: 28px;
+      bottom: 26px;
+    }
+
+    .info_bottom .ibBtn.comment {
+      color: var(--color-title);
+      font-size: 12px;
+      text-align: center;
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 10px 0 30px;
+      margin-right: 10px;
+      box-sizing: border-box;
+      border: 1px solid #eaeaea;
+      border-radius: 20px;
+      background: url(/images/customer/icon_commnet.png) no-repeat;
+      background-size: auto;
+      background-position: top 7px left 10px;
+      cursor: pointer;
+    }
+
+    /* Main - Top Btn */
+    .fixed_area {
+      right: 10px;
+      width: 80px;
+      position: fixed;
+      bottom: 20px;
+      z-index: 200;
+    }
+
+    .btn_top.on {
+      display: block;
+    }
+
+    .btn_top {
+      width: 80px;
+      height: 72px;
+      background: url(../images/common/btn_top_pc.svg) no-repeat 0 0 / 100%;
+      filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+    }
+
+    .sr_only {
+      position: absolute;
+      top: -99999px;
+      font-size: 0;
+      height: 0;
+    }
+
+
+    /* Footer */
+    .footer_top_container {
+      height: 70px;
+      border-top: 1px solid #c7c7c7;
+      border-bottom: 1px solid #c7c7c7;
+      display: flex;
+      background: #F7F7F7;
+    }
+
+    .footer_top {
+      width: 1200px;
+      margin: auto;
+    }
+
+    .footer_top ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer_top ul li a {
+      font-size: 15px;
+      font-weight: bold;
+      margin-right: 30px;
+      color: #3c3c3c;
+    }
+
+    .f_left {
+      float: left;
+      margin: 8px 0 0 0;
+    }
+
+    .f_right {
+      float: right;
+    }
+
+    .footer_bottom_container {
+      position: relative;
+      max-width: 1200px;
+      margin: auto;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .footer_bottom_container ul {
+      display: flex;
+    }
+
+    .footer_bottom_container ul li p {
+      margin-bottom: 6px;
+    }
+
+    .b_left {
+      margin: 15px 0 0 20px;
+    }
+
+    .b_right {
+      margin: 30px 0 90px 25px;
+    }
+
+    .b_last_img {
+      position: absolute;
+      top: 30px;
+      right: 0px;
+    }
+
+    .btnTop a {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 70px;
+      height: 70px;
+      text-indent: -9999px;
+      display: block;
+      background-color: rgba(28, 56, 99, 0.5);
+      background: url(./images/btn_Top.jpg) no-repeat center center;
+      z-index: 3333333333333333333333;
+    }
+  </style>
+</head>
+
+<body style="min-width: 1600px;">
+  <!-- <div class="skipMenu" title="스킵 메뉴">
+    <a href="#contents">본문 바로가기</a>
+  </div> -->
+  <div class="header_wrap">
+    <div class="ottugi_title">
+      <h1>오뚜기</h1>
+      <a href="../index.html">
+        <img src="../images/main/ottugi_logo.svg" alt="">
+      </a>
+    </div>
+    <div class="header_container">
+      <div class="header_all_wrap">
+        <nav class="header_nav">
+          <ul>
+            <li><a href="./about.html">회사소개</a>
+              <ul>
+                <li><a href="./about.html">회사개요*</a></li>
+                <li><a href="./business.html">사업소개*</a></li>
+                <li><a href="./ceo.html">CEO 메세지*</a></li>
+                <li><a href="./history.html">연혁*</a></li>
+                <li><a href="./maps.html">오시는길*</a></li>
+              </ul>
+            </li>
+            <li><a href="#">ESG경영</a>
+              <ul>
+                <li><a href="#none">Overview</a></li>
+                <li><a href="./ESG.html">ESG경영소개*</a></li>
+                <li><a href="#none">환경</a></li>
+                <li><a href="#none">사회</a></li>
+                <li><a href="#none">지배구조</a></li>
+                <li><a href="#none">사회공헌</a></li>
+                <li><a href="#none">동반성장</a></li>
+                <li><a href="#none">보고서및정책</a></li>
+                <li><a href="#none">ESG Data</a></li>
+              </ul>
+            </li>
+            <li><a href="./product.html">제품이야기</a>
+              <ul>
+                <li><a href="./product.html">제품정보*</a></li>
+                <li><a href="./product_new.html">신제품*</a></li>
+                <li><a href="./recipe.html">인기레시피*</a></li>
+              </ul>
+            </li>
+            <li><a href="#">브랜드경험</a>
+              <ul>
+                <li><a href="#none">Overview</a></li>
+                <li><a href="#none">공식캐릭터</a></li>
+                <li><a href="#none">브랜드공간</a></li>
+                <li><a href="#none">공장견학</a></li>
+                <li><a href="#none">공모전</a></li>
+                <li><a href="#none">페스티벌</a></li>
+                <li><a href="#none">이벤트</a></li>
+              </ul>
+            </li>
+            <li><a href="#none">홍보센터</a>
+              <ul>
+                <li><a href="./notice.html">공지사항*</a></li>
+                <li><a href="#none">오뚜기뉴스룸</a></li>
+                <li><a href="#none">언론보도</a></li>
+                <li><a href="#none">CF스토리</a></li>
+                <li><a href="#none">칼럼</a></li>
+                <li><a href="#none">투자정보</a></li>
+              </ul>
+            </li>
+            <li><a href="./customer.html">고객서비스</a>
+              <ul>
+                <li><a href="./customer.html">고객의 소리*</a></li>
+                <li><a href="#none">접수내역조회</a></li>
+                <li><a href="#none">고객상담 프로세스</a></li>
+                <li><a href="#none">고객만족활동</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- 랭귀지, 챗봇등 -->
+        <div class="lang_menu_btn">
+          <a href="#none">
+            <img src="../images/main/free-icon-menu-3502458.png" alt="">
+          </a>
+        </div>
+        <div class="lang">
+          <div class="lang_down">
+            <a href="#none">KR
+              <img src="../images/main/lang_down.svg" alt="">
+            </a>
+            <div class="lang_list">
+              <p><a href="#none">KR</a></p>
+              <p><a href="#none">EN</a></p>
+            </div>
+          </div>
+          <div class="ottugi_search">
+            <a href="#none"><img src="../images/main/ottugi_search.svg" alt=""></a>
+          </div>
+          <div class="ottugi_chat">
+            <a href="#none"><img src="../images/main/ottugi_chatbot.svg" alt=""></a>
+          </div>
+          <div class="ottugi_mall">
+            <a href="#none"><img src="../images/main/ottugi_mall.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+      <!-- 반응형 토글 버튼 -->
+      <div class="toggle_btn">
+        <a href="#none">
+          <img src="../images/main/littlemenu.svg" alt="">
+        </a>
+      </div>
+      <!-- 드롭다운메뉴 배경 -->
+      <div class="nav_bg"></div>
+    </div>
+  </div>
+
+  <main>
+    <div id="contents">
+      <section class="main_banner">
+        <h2 class="popular_recipe">인기 키워드</h2>
+        <ul class="hashTag">
+          <li><a href="#none">#카레</a></li>
+          <li><a href="#none">#마요네스</a></li>
+          <li><a href="#none">#분식</a></li>
+          <li><a href="#none">#브런치</a></li>
+          <li><a href="#none">#집밥</a></li>
+          <li><a href="#none">#치즈듬뿍</a></li>
+          <li><a href="#none">#캠핑</a></li>
+          <li><a href="#none">#간단 꿀조합</a></li>
+        </ul>
+      </section>
+
+      <section class="topHot">
+        <div class="topHot_wrap">
+          <div class="topHot_title">
+            <h2>Ottogi's Choice</h2>
+            <h3>이번 주<span>&nbsp;인기</span>레시피</h3>
+          </div>
+          <ul class="topHot_content">
+            <li class="topHot_item">
+              <div class="thmb">
+                <a href="#none">
+                  <img src="/images/customer/img_topmenu01.jpg" alt="이번 주 인기 레시피1" />
+                </a>
+              </div>
+              <div class="info">
+                <div class="info_title ellip" id="pumkin">
+                  <a href="#none" onclick="pumkinOpen()">단호박 뇨끼</a>
+                  </span>
+                </div>
+                <div class="info_top">
+                  <p class="count">조회수: 98</p>
+                  <p>작성일: 2023-12-29</p>
+                </div>
+                <div class="info_bottom">
+                  <p class="ibBtn like02">
+                    <span class="material-symbols-outlined">
+                      favorite
+                    </span>좋아요: 42
+                  </p>
+                  <p class="ibBtn comment">댓글: 12</p>
+                </div>
+              </div>
+            </li>
+            <li class="topHot_item">
+              <div class="thmb">
+                <a href="#none">
+                  <img src="/images/product/img_topmenu02.jpg" alt="이번 주 인기 레시피2" />
+                </a>
+              </div>
+              <div class="info">
+                <div class="info_title ellip">
+                  <a href="#none">삼삼 파피요트</a>
+                </div>
+                <div class="info_top">
+                  <p class="count">조회수: 72</p>
+                  <p>작성일: 2023-12-26</p>
+                </div>
+                <div class="info_bottom">
+                  <p class="ibBtn like">좋아요: 22</p>
+                  <p class="ibBtn comment">댓글: 12</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="recipe_tab">
+        <h2 class="hide">레시피 구분</h2>
+        <ul>
+          <li>
+            <a href="#none" onclick="allRecipe()" class="all">전체</a>
+          </li>
+          <li>
+            <a href="#none" onclick="sortRice()" class="rice">밥</a>
+          </li>
+          <li>
+            <a href="#none" onclick="sortSide()" class="side">반찬</a>
+          </li>
+          <li>
+            <a href="#none" onclick="sortSoup()" class="soup">국물</a>
+          </li>
+          <li>
+            <a href="#none" onclick="sortNoodle()" class="noodle">면</a>
+          </li>
+          <li>
+            <a href="#none" onclick="sortMeat()" class="meat">고기</a>
+          </li>
+          <li>
+            <a href="#none" onclick="sortSnack()" class="snack">간식</a>
+          </li>
+          <li>
+            <a href="#none" onclick="sortGlobal()" class="global">세계음식</a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="search_area">
+        <form name="topform" id="topform" action="" method="post">
+          <label for="s_value" type="text"></label>
+          <input type="text" name="s_value" id="s_value" placeholder="오뚜기 제품, 요리명 등 다양하게 검색해보세요!(예: 카레)"
+            title="검색어를 입력해주세요." />
+          <img src="/images/product/icon_glass.svg" alt="검색" />
+          <button type="button">검색</button>
+        </form>
+      </div>
+
+      <section class="recipe_list">
+        <div class="hits">
+          <p>전체 <strong class="num">52</strong>건</p>
+          <ul class="sort_list">
+            <li class="active"><a href="#none">추천순</a></li>
+            <li class="non_active"><a href="#none">조회순</a></li>
+          </ul>
+        </div>
+
+        <ul class="list_area">
+          <li class="item side">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item01.jpg" alt="레시피" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i>
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#밑반찬</span><span>#매실청</span><span>#단짠단짠</span>
+              </div>
+              <div class="info_title ellip" id="walnut">
+                <a href="#none" onclick="walnutOpen()">호두마늘볶음</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item rice">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item02.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i><i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#덮밥요리</span><span>#오뚜기햄</span><span>#골드마요네스</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">햄마요덮밥</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 9</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item rice">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item03.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#태국식</span><span>#게맛살</span><span>#오뚜기카레</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">푸팟퐁카레</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 7</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item noodle">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item04.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i><i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#파스타샐러드</span><span>#키즈셰프</span><span>#토마토퓨레</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">토마토 냉파스타</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 29</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item sideh">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item05.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon"></div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#밑반찬</span><span>#매실청</span><span>#집밥</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">북어채 무침</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 19</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item noodle">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item06.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#미트볼X파스타면</span><span>#오즈키친</span><span>#스파게티</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">토마토 미트볼파스타</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 36</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item dessert">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item07.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i><i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#치즈듬뿍</span><span>#단짠단짠</span><span>#골드마요네스</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">콘치즈</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 72</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item side">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item08.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#3일숙성카레</span><span>#에그인헬</span><span>#계란요리</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">카레 샥슈카</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 2</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item rice">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item09.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i><i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#3일숙성카레</span><span>#카레맛집</span><span>#쇠고기</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">카레 비프 스튜</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 28</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item global">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item10.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#멕시코</span><span>#밀또띠아</span><span>#닭가슴살</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">치킨 카레 타코</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 21</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item soup">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item11.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i><i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#셰프의팁</span><span>#즉석국</span><span>#캠핑</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">차돌박이 된장찌개</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 11</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item rice">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item12.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#셰프의팁</span><span>#라면밥</span><span>#냄비밥</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">진라면밥</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 102</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 77</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item noodle">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item13.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#셰프의팁</span><span>#즉석국</span><span>#집밥</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">육개장 칼국수</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 17</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item side">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item14.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i><i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#집밥</span><span>#밑반찬</span><span>#꿀유자차</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">유자 연근조림</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 4</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 2</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item side">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item15.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#스위트콘</span><span>#부침개</span><span>#연유</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">옥수수전</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 17</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 15</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item soup">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item16.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#집밥</span><span>#밑반찬</span><span>#옛날미역</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">오이미역냉국</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item snack">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item17.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i><i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#갈릭아이올리</span><span>#계란요리</span><span>#브런치</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">에그마요 샌드위치</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 49</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 32</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item snack">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item18.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i><i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#베이킹</span><span>#찹쌀호떡믹스</span><span>#에어프라이어</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">시나몬롤</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 11</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item meat">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item19.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#불고기</span><span>#도시락</span><span>#파티</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#none">쇠고기채소말이</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 33</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item soup">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item20.jpg" alt="레시피 이미지" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#얼큰칼칼</span><span>#오늘밥상</span><span>#한식</span>
+              </div>
+              <div class="info_title ellip">
+                <a href="#">삼겹살 순두부짜글이</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 82</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 76</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item snack">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item21.jpg" alt="레시피" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i>
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#밑반찬</span><span>#매실청</span><span>#단짠단짠</span>
+              </div>
+              <div class="info_title ellip" id="walnut">
+                <a href="#none">잔망루피 케이크팝</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item rice">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item22.jpg" alt="레시피" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i>
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#밑반찬</span><span>#매실청</span><span>#단짠단짠</span>
+              </div>
+              <div class="info_title ellip" id="walnut">
+                <a href="#none">고스트 인 블랙라이스</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item global">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item23.jpg" alt="레시피" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i>
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#밑반찬</span><span>#매실청</span><span>#단짠단짠</span>
+              </div>
+              <div class="info_title ellip" id="walnut">
+                <a href="#none">찹쌀 호떡 난 & 월드퀴진 카레</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item rice">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item24.jpg" alt="레시피" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i>
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#밑반찬</span><span>#매실청</span><span>#단짠단짠</span>
+              </div>
+              <div class="info_title ellip" id="walnut">
+                <a href="#none">식감만족 후토마끼</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item meat">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item25.jpg" alt="레시피" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i>
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#밑반찬</span><span>#매실청</span><span>#단짠단짠</span>
+              </div>
+              <div class="info_title ellip" id="walnut">
+                <a href="#none">떡갈비 더덕꼬치</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item meat">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item26.jpg" alt="레시피" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i>
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#밑반찬</span><span>#매실청</span><span>#단짠단짠</span>
+              </div>
+              <div class="info_title ellip" id="walnut">
+                <a href="#none">창녕갈릭 LA갈비 구이</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="item meat">
+            <div class="thmb">
+              <a href="#none">
+                <div class="img">
+                  <div class="scale">
+                    <img src="/images/product/menu_item27.jpg" alt="레시피" />
+                  </div>
+                </div>
+                <div class="icon">
+                  <i class="icon_dm">추천</i>
+                  <i class="icon_best">인기</i>
+                </div>
+              </a>
+            </div>
+            <div class="info">
+              <div class="info_tag">
+                <span>#밑반찬</span><span>#매실청</span><span>#단짠단짠</span>
+              </div>
+              <div class="info_title ellip" id="walnut">
+                <a href="#none">티본스테이크</a>
+              </div>
+              <div class="info_top">
+                <p class="count">조회수: 21</p>
+                <p>작성일: 2023-11-06</p>
+              </div>
+              <div class="info_bottom">
+                <p class="ibBtn like">좋아요: 9</p>
+                <p class="ibBtn comment">댓글: 2</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="fixed_area">
+      <a href="#" class="btn_top on">
+        <span class="sr_only">상단으로 이동하기</span>
+      </a>
+    </div>
+
+  </main>
+  <footer class="footer">
+    <div class="footer_wrap">
+      <div class="footer_top_container">
+        <div class="footer_top">
+          <span class="f_left">
+            <ul>
+              <li><a href="#none"><strong>개인정보처리방침</strong></a></li>
+              <li><a href="#none">고객상담</a></li>
+              <li><a href="#none">찾아오시는 길</a></li>
+              <li><a href="#none">오뚜기몰</a></li>
+              <li><a href="#none">고객상담 챗봇</a></li>
+            </ul>
+          </span>
+          <span class="f_right">
+            <ul>
+              <li><a href="#none">
+                  <img src="../images/main/footer1.png" alt="">
+                </a></li>
+              <li><a href="#none">
+                  <img src="../images/main/footer2.png" alt="">
+                </a></li>
+              <li><a href="#none">
+                  <img src="../images/main/footer3.png" alt="">
+                </a></li>
+              <li><a href="#none">
+                  <img src="../images/main/footer4.png" alt="">
+                </a></li>
+            </ul>
+          </span>
+        </div>
+      </div>
+
+      <div class="footer_bottom_wrap">
+        <div class="footer_bottom_container">
+          <ul>
+            <li class="b_left"><img src="../images/main/f_logo.jpg" alt=""></li>
+            <li class="b_right">
+              <p>(주)오뚜기 | 사업자등록번호 : 138-81-03238 | 대표이사 황성만 |</p>
+              <p>주소 (14060) 경기도 안양시 동안구 흥안대로 405 (평촌동 160)오뚜기 고객상담실 : 080-024-2311</p>
+              <p>오뚜기라면 고객상담실 : 080-088-1212 (월~금 08:30~17:00)</p>
+              <br>
+              <p>Copyright ⓒ OTTOGI CORPORATION.,Ltd All Rights Reserved.</p>
+            </li>
+          </ul>
+          <div class="b_last_img">
+            <img src="../images/main/footer_b_img1.gif" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script>
+    // Header - Hover GNB DropDown 메뉴
+    $(document).ready(function () {
+      $(".header_nav li").hover(function () {
+        $(".header_nav ul ul, .nav_bg").stop().slideDown("fast");
+      }, function () {
+        $(".header_nav ul ul, .nav_bg").stop().slideUp("fast");
+      });
+
+      // Header - Language, Chatbot 등등
+      isShow = true;
+      $('.lang_menu_btn').on('click', function () {
+        if (isShow) {
+          isShow = false;
+          $('.lang').hide();
+        } else {
+          isShow = true;
+          $('.lang').show();
+        }
+      })
+
+      // Header - Language
+      isShow = true;
+      $('.lang_down').on('click', function () {
+        if (isShow) {
+          isShow = false;
+          $('.lang_list').hide();
+        } else {
+          isShow = true;
+          $('.lang_list').show();
+        }
+      })
+    });
+
+    // Main - 음식 이미지 Hover 효과
+    $(".scale img").hover(
+      function () {
+        $(this).stop().animate({ width: "125%", height: "125%", marginLeft: "-12.5%", marginTop: "-12.5%" }, { duration: 200, easing: "linear" });
+      },
+      function () {
+        $(this).stop().animate({ width: "100%", height: "100%", marginLeft: 0, marginTop: 0 }, { duration: 200, easing: "linear" });
+      }
+    );
+
+    // Main - 레시피 구분 탭
+    const recipeNum = document.querySelector('.num');
+
+    const recipeSections = [
+      document.querySelector(".all"),
+      document.querySelector(".rice"),
+      document.querySelector(".side"),
+      document.querySelector(".soup"),
+      document.querySelector(".noodle"),
+      document.querySelector(".meat"),
+      document.querySelector(".snack"),
+      document.querySelector(".global")
+    ];
+
+    const sectionItems = {
+      all: document.querySelectorAll(".list_area > li"),
+      rice: document.querySelectorAll(".list_area > li.rice"),
+      side: document.querySelectorAll(".list_area > li.side"),
+      soup: document.querySelectorAll(".list_area > li.soup"),
+      noodle: document.querySelectorAll(".list_area > li.noodle"),
+      meat: document.querySelectorAll(".list_area > li.meat"),
+      snack: document.querySelectorAll(".list_area > li.snack"),
+      global: document.querySelectorAll(".list_area > li.global")
+    };
+
+    recipeSections.forEach((section, index) => {
+      section.addEventListener("click", function () {
+        const sectionName = getSectionName(index);
+        const items = sectionItems[sectionName];
+        filterItems(items, sectionName);
+      });
+    });
+
+    function getSectionName(index) {
+      const sectionNames = [
+        "all",
+        "rice",
+        "side",
+        "soup",
+        "noodle",
+        "meat",
+        "snack",
+        "global"
+      ];
+      return sectionNames[index];
+    }
+
+    function filterItems(items, sectionName) {
+      sectionItems.all.forEach((item) => {
+        item.style.display = "none";
+      });
+
+      items.forEach((item) => {
+        item.style.display = "block";
+      });
+
+      updateRecipeNum(sectionItems[sectionName].length);
+    }
+
+    function updateRecipeNum(num) {
+      recipeNum.textContent = num;
+    }
+
+    // Main - 레시피 detail(호두마늘볶음)
+    const walnut = document.getElementById("walnut");
+    walnut.addEventListener("click", function walnutOpen() {
+      window.open(
+        "recipe_detail_01.html",
+        "",
+        "width=1267px, height=1000px, left=0, top=0"
+      );
+    });
+
+    // Main - 레시피 detail(호두마늘볶음)
+    const pumkin = document.getElementById("pumkin");
+    pumkin.addEventListener("click", function pumkinOpen() {
+      window.open(
+        "recipe_detail_02.html",
+        "",
+        "width=1267px, height=1000px, left=0, top=0"
+      );
+    });
+
+    // Top btn
+    var btnTop = document.querySelector('.btn_top');
+
+    window.addEventListener("scroll", function () {
+      var scrollY = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollY > 180) {
+        btnTop.classList.add("on");
+      } else {
+        btnTop.classList.remove("on");
+      }
+    });
+
+  </script>
+</body>
+
+</html>

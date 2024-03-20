@@ -1,0 +1,348 @@
+/* common */
+html,
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.circle {
+    background: url(/images/product/circle-scatter-haikei.svg) no-repeat;
+}
+
+.prd-wrap {
+    width: 100%;
+    display: flex;
+    gap: 45px;
+    padding-bottom: 100px;
+}
+
+.prd-img img {
+    width: 370px;
+    height: 400px;
+}
+
+.prd-item p {
+    font-size: 22px;
+    padding-top: 30px;
+    font-weight: bold;
+}
+.product_cat {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.product_cat .product_title h2 {
+    font-size: 36px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    text-align: center
+}
+
+.product_cat .product_title p {
+    font-size: 20px;
+}
+
+.main_visual p {
+    display: block;
+    height: 147px;
+    margin: 50px auto;
+    background: url(/images/product/product_info.svg) no-repeat 50% / 100%;
+    font-size: 0;
+    color: transparent;
+    letter-spacing: 62.4px;
+    margin-bottom: 50px;
+}
+
+.search_box {
+    padding-top: 30px;
+}
+
+.search_box .inp_base {
+    padding: 5px 60px 5px 20px;
+    width: 500px;
+    height: 40px;
+}
+
+.search_box .btn_del {
+    right: 49px;
+}
+
+.search_box .btn_search {
+    top: 5px;
+    position: relative;
+    right: 40px;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    top: -5px;
+    background: url(/images/product/ico_search.svg) no-repeat 50% 50% / 24px 24px;
+}
+
+input {
+    color: #000;
+    border: 0;
+    border-radius: 0;
+    font-weight: 300;
+}
+
+button {
+    overflow: visible;
+    border: 0;
+    color: inherit;
+    line-height: inherit;
+    cursor: pointer;
+}
+
+.inp_base {
+    width: 100%;
+    height: 40px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    background: #F8F8F8;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 23px;
+}
+
+.hide {
+    position: absolute;
+    top: -9999px;
+    font-size: 0;
+    height: 0;
+}
+
+
+/* .prd-item.n1,
+.prd-item.n3,
+.prd-item.n6,
+.prd-item.n14 {
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.prd-item.n8,
+.prd-item.n10 {
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.prd-item.n12 {
+    position: relative;
+    right: 200px;
+    width: 100%;
+    padding-bottom: 15px;
+
+}
+
+.prd-item.n2,
+.prd-item.n4,
+.prd-item.n7,
+.prd-item.n9,
+.prd-item.n13,
+.prd-item.n15 {
+    position: relative;
+    left: 300px;
+    padding-bottom: 30px;
+}
+
+.prd-item.n5,
+.prd-item.n11 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.prd-item p {
+    padding-top: 40px;
+    padding-bottom: 80px;
+    font-size: 34px;
+    color: #222 !important;
+    font-weight: bold;
+}
+
+.prd-item.n8 p,
+.prd-item.n10 p {
+    position: relative;
+    width: 30%;
+    left: 240px;
+} */
+
+/* 이미지 호버 */
+.prd-img {
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.prd-img img {
+    object-fit: cover;
+    transition: 0.2s linear;
+    border-radius: 20px;
+}
+
+
+.prd-img:hover a img {
+    transition: 0.2s linear;
+    transform: scale(1.1);
+    overflow: hidden;
+
+}
+
+
+/* 메인 이미지 */
+.main {
+    width: 100%;
+    min-width: 1280px;
+    height: 424px;
+    background: url(/images/company/story_visual_banner_pc.jpg) no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    clear: both;
+}
+
+.main h2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    bottom: 0px;
+    font-size: 45px;
+    color: #222222;
+}
+  
+.main p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    padding-top: 54px;
+}
+
+.section.no-pad-bot {
+    padding-bottom: 0;
+}
+
+/* 회사개요 회사연혁 제품연혁 */
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0;
+}
+
+.container2 {
+    width: 1200px;
+    margin: auto;
+}
+
+.cnb3 {
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.cnb3 ul {
+    display: flex;
+    height: 124px;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.cnb3 a.on:hover {
+    color: #dc2c34;
+    border-bottom: 5px solid #dc2c34;
+}
+
+.on {
+    display: block;
+    color: #666;
+    width: 240px;
+    height: 75px;
+    font-size: 18px;
+}
+
+.dep3 {
+    height: 100px;
+    line-height: 50px;
+    border-bottom: 1px solid #e2e2e2;
+    box-sizing: border-box;
+}
+
+.dep3 ul.cnb3 li {
+    width: 33.3333%;
+}
+
+.breadcruma {
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: #666;
+}
+
+*,
+::before,
+*:after {
+    box-sizing: inherit;
+}
+
+.breadcrumb::before {
+    content: "/";
+    color: #666666;
+    vertical-align: top;
+    /* display: inline-block; */
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0 3px 0 3px;
+}
+
+.path {
+    height: 80px !important;
+    line-height: 60px;
+}
+
+/* .btnTop a {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+    text-indent: -9999px;
+    display: block;
+    background-color: rgba(28, 56, 99, 0.5);
+    background: url(/images/company/btn_Top.jpg) no-repeat center center;
+    z-index: 3333333333333333333333;
+} */
+
+.fixed_area {
+    right: 10px;
+    width: 80px;
+    position: fixed;
+    bottom: 20px;
+    z-index: 200;
+  }
+  
+  .btn_top.on {
+    display: block;
+  }
+  
+  .btn_top {
+    width: 80px;
+    height: 72px;
+    background: url(/images/common/btn_top_pc.svg) no-repeat 0 0 / 100%;
+    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+  }
+  .sr_only {
+    position: absolute;
+    top: -99999px;
+    font-size: 0;
+    height: 0;
+  }

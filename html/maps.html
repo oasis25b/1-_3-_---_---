@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>오시는길</title>
+   <link rel="stylesheet" href="../css/maps.css">
+   <link rel="icon" href="../images/common/favicon.ico">
+   <script src="../js/jquery-3.7.1.min.js"></script>
+   <script src="../js/maps.js"></script>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&display=swap"
+      rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body style="min-width: 1800px;">
+   <!-- 헤더 부분 -->
+   <div class="header_wrap">
+      <div class="ottugi_title">
+         <h1>오뚜기</h1>
+         <a href="../index.html">
+            <img src="../images/main/ottugi_logo.svg" alt="">
+         </a>
+      </div>
+      <div class="header_container">
+         <div class="header_all_wrap">
+            <nav class="header_nav">
+               <ul>
+                  <li><a href="./about.html">회사소개</a>
+                     <ul>
+                        <li><a href="./about.html">회사개요*</a></li>
+                        <li><a href="./business.html">사업소개*</a></li>
+                        <li><a href="./ceo.html">CEO 메세지*</a></li>
+                        <li><a href="./history.html">연혁*</a></li>
+                        <li><a href="./maps.html">오시는길*</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="#">ESG경영</a>
+                     <ul>
+                        <li><a href="#none">Overview</a></li>
+                        <li><a href="./ESG.html">ESG경영소개*</a></li>
+                        <li><a href="#none">환경</a></li>
+                        <li><a href="#none">사회</a></li>
+                        <li><a href="#none">지배구조</a></li>
+                        <li><a href="#none">사회공헌</a></li>
+                        <li><a href="#none">동반성장</a></li>
+                        <li><a href="#none">보고서및정책</a></li>
+                        <li><a href="#none">ESG Data</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="./product.html">제품이야기</a>
+                     <ul>
+                        <li><a href="./product.html">제품정보*</a></li>
+                        <li><a href="./product_new.html">신제품*</a></li>
+                        <li><a href="./recipe.html">인기레시피*</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="#">브랜드경험</a>
+                     <ul>
+                        <li><a href="#none">Overview</a></li>
+                        <li><a href="#none">공식캐릭터</a></li>
+                        <li><a href="#none">브랜드공간</a></li>
+                        <li><a href="#none">공장견학</a></li>
+                        <li><a href="#none">공모전</a></li>
+                        <li><a href="#none">페스티벌</a></li>
+                        <li><a href="#none">이벤트</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="#none">홍보센터</a>
+                     <ul>
+                        <li><a href="./notice.html">공지사항*</a></li>
+                        <li><a href="#none">오뚜기뉴스룸</a></li>
+                        <li><a href="#none">언론보도</a></li>
+                        <li><a href="#none">CF스토리</a></li>
+                        <li><a href="#none">칼럼</a></li>
+                        <li><a href="#none">투자정보</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="./customer.html">고객서비스</a>
+                     <ul>
+                        <li><a href="./customer.html">고객의 소리*</a></li>
+                        <li><a href="#none">접수내역조회</a></li>
+                        <li><a href="#none">고객상담 프로세스</a></li>
+                        <li><a href="#none">고객만족활동</a></li>
+                     </ul>
+                  </li>
+               </ul>
+            </nav>
+            <!-- 랭귀지, 챗봇등 -->
+            <div class="lang_menu_btn">
+               <a href="#none">
+                  <img src="../images/main/free-icon-menu-3502458.png" alt="">
+               </a>
+            </div>
+            <div class="lang">
+               <div class="lang_down">
+                  <a href="#none">KR
+                     <img src="../images/main/lang_down.svg" alt="">
+                  </a>
+                  <div class="lang_list">
+                     <p><a href="#none">KR</a></p>
+                     <p><a href="#none">EN</a></p>
+                  </div>
+               </div>
+               <div class="ottugi_search">
+                  <a href="#none"><img src="../images/main/ottugi_search.svg" alt=""></a>
+               </div>
+               <div class="ottugi_chat">
+                  <a href="#none"><img src="../images/main/ottugi_chatbot.svg" alt=""></a>
+               </div>
+               <div class="ottugi_mall">
+                  <a href="#none"><img src="../images/main/ottugi_mall.svg" alt=""></a>
+               </div>
+            </div>
+         </div>
+         <!-- 반응형 토글 버튼 -->
+         <div class="toggle_btn">
+            <a href="#none">
+               <img src="../images/main/littlemenu.svg" alt="">
+            </a>
+         </div>
+         <!-- 드롭다운메뉴 배경 -->
+         <div class="nav_bg"></div>
+      </div>
+   </div>
+   <!-- 메인 부분 -->
+   <div class="maps_wrap">
+      <div class="maps_container">
+         <div class="maps_title_wrap">
+            <div class="maps_top">
+               <h2>오시는길</h2>
+               <p>맛과 행복의 길을 안내하는 오뚜기</p>
+            </div>
+            <div class="maps_title">
+               <ul>
+                  <li class="on">#오뚜기센터</li>
+                  <li>#공장</li>
+                  <li>#연구소</li>
+                  <li>#영업지점</li>
+               </ul>
+            </div>
+         </div>
+         <div class="maps_cont">
+            <div class="on maps_img">
+               <div class="maps_section_wrap">
+                  <div class="maps_section">
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">오뚜기센터</span>
+                           <p>(06177) 서울 강남구 영동대로 308 (대치동)</p>
+                           <span>TEL</span>
+                           02-2010-0114
+                           <span>FAX</span>
+                           02-2010-0114
+                        </a>
+                     </div>
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">영업본부</span>
+                           <p>(06177) 서울 강남구 영동대로 308 (대치동)</p>
+                           <span>TEL</span>
+                           02-2010-0114
+                           <span>FAX</span>
+                           02-2010-0799
+                        </a>
+                     </div>
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">제조본부</span>
+                           <p>(06177) 서울 강남구 영동대로 308 (대치동)</p>
+                           <span>TEL</span>
+                           02-2010-0114
+                           <span>FAX</span>
+                           02-2010-0799
+                        </a>
+                     </div>
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">품질보증본부</span>
+                           <p>(06177) 서울 강남구 영동대로 308 (대치동)</p>
+                           <span>TEL</span>
+                           02-2010-0114
+                           <span>FAX</span>
+                           02-2010-0799
+                        </a>
+                     </div>
+                  </div>
+                  <iframe
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.2476711069935!2d127.06505437642818!3d37.50207632782081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca43945367ced%3A0x86a74b9bfa038e31!2z7Jik65qc6riw7IS87YSw!5e0!3m2!1sko!2skr!4v1702521957193!5m2!1sko!2skr"
+                     width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy"
+                     referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+               </div>
+            </div>
+            <div class="maps_img">
+               <div class="maps_section_wrap">
+                  <div class="maps_section">
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">안양공장</span>
+                           <p>(14060) 경기 안양시 동안구 흥안대로 405</p>
+                           <span>TEL</span>
+                           031-421-2122
+                           <span>FAX</span>
+                           031-688-8988
+                        </a>
+                     </div>
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">대풍공장</span>
+                           <p>(27670) 충북 음성군 대소면 대충산단로 128</p>
+                           <span>TEL</span>
+                           043-535-7321
+                           <span>FAX</span>
+                           043-535-7327
+                        </a>
+                     </div>
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">삼남공장</span>
+                           <p>(44953) 울산 울주군 삼남면 반구대로 149</p>
+                           <span>TEL</span>
+                           055-381-0890
+                           <span>FAX</span>
+                           055-381-0897
+                        </a>
+                     </div>
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">포승공장</span>
+                           <p>(17958) 경기도 평택시 포승읍 포승공단로 2</p>
+                           <span>TEL</span>
+                           031-681-6873
+                           <span>FAX</span>
+                           031-686-8176
+                        </a>
+                     </div>
+                  </div>
+                  <iframe
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101287.77380921054!2d126.98522885431679!3d37.502188127404864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5f7f9230765d%3A0x4ee0a0b3e4af16c7!2z7Jik65qc6riw7Iud7ZKIIOyViOyWkeqzteyepQ!5e0!3m2!1sko!2skr!4v1702522656420!5m2!1sko!2skr"
+                     width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy"
+                     referrerpolicy="no-referrer-when-downgrade"></iframe>
+               </div>
+            </div>
+
+
+            <div class="maps_img">
+               <div class="maps_section_wrap">
+                  <div class="maps_section">
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">중앙연구소</span>
+                           <p>(14060) 경기 안양시 동안구 흥안대로<br>
+                              49 (평촌동)</p>
+                           <span>TEL</span>
+                           031-421-2135
+                           <span>FAX</span>
+                           031-421-2133
+                        </a>
+                     </div>
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">식품안전과학연구소</span>
+                           <p>(14060) 경기 안양시 동안구 흥안대로<br>
+                              395번길 49</p>
+                           <span>TEL</span>
+                           031-421-2139
+                           <span>FAX</span>
+                           031-421-2133
+                        </a>
+                     </div>
+                  </div>
+                  <iframe
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1884.9156399561532!2d126.96872484467228!3d37.38894284048524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5e1155a29ffb%3A0x5c759013ea773451!2z7Jik65qc6riwIOykkeyVmeyXsOq1rOyGjA!5e0!3m2!1sko!2skr!4v1702525939835!5m2!1sko!2skr"
+                     width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy"
+                     referrerpolicy="no-referrer-when-downgrade"></iframe>
+               </div>
+            </div>
+
+
+            <div class="maps_img">
+               <div class="maps_section_wrap">
+                  <div class="maps_section">
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">강릉지점</span>
+                           <p>(06177) 서울 강남구 영동대로 308 (대치동)</p>
+                           <span>TEL</span>
+                           02-2010-0114
+                           <span>FAX</span>
+                           02-2010-0114
+                        </a>
+                     </div>
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">강북지점</span>
+                           <p>(06177) 서울 강남구 영동대로 308 (대치동)</p>
+                           <span>TEL</span>
+                           02-2010-0114
+                           <span>FAX</span>
+                           02-2010-0799
+                        </a>
+                     </div>
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">강서지점</span>
+                           <p>(06177) 서울 강남구 영동대로 308 (대치동)</p>
+                           <span>TEL</span>
+                           02-2010-0114
+                           <span>FAX</span>
+                           02-2010-0799
+                        </a>
+                     </div>
+                     <div class="maps_content">
+                        <a href="#none">
+                           <span class="area_main">경기지점</span>
+                           <p>(06177) 서울 강남구 영동대로 308 (대치동)</p>
+                           <span>TEL</span>
+                           02-2010-0114
+                           <span>FAX</span>
+                           02-2010-0799
+                        </a>
+                     </div>
+                  </div>
+                  <iframe
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d331.57652840759823!2d128.88880674951548!3d37.75474765495336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3561e5f6a3618d4f%3A0x875552443eafd26b!2z6rCV7JuQ64-EIOqwleumieyLnCDrqoXso7zroZwgNTI!5e0!3m2!1sko!2skr!4v1702526009103!5m2!1sko!2skr"
+                     width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy"
+                     referrerpolicy="no-referrer-when-downgrade"></iframe>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="fixed_area">
+      <a href="#" class="btn_top on">
+         <span class="sr_only">상단으로 이동하기</span>
+      </a>
+   </div>
+
+
+   <!-- 푸터 -->
+   <footer class="footer">
+      <div class="footer_wrap">
+         <div class="footer_top_container">
+            <div class="footer_top">
+               <span class="f_left">
+                  <ul>
+                     <li><a href="#none"><strong>개인정보처리방침</strong></a></li>
+                     <li><a href="#none">고객상담</a></li>
+                     <li><a href="#none">찾아오시는 길</a></li>
+                     <li><a href="#none">오뚜기몰</a></li>
+                     <li><a href="#none">고객상담 챗봇</a></li>
+                  </ul>
+               </span>
+               <span class="f_right">
+                  <ul>
+                     <li><a href="#none">
+                           <img src="../images/main/footer1.png" alt="">
+                        </a></li>
+                     <li><a href="#none">
+                           <img src="../images/main/footer2.png" alt="">
+                        </a></li>
+                     <li><a href="#none">
+                           <img src="../images/main/footer3.png" alt="">
+                        </a></li>
+                     <li><a href="#none">
+                           <img src="../images/main/footer4.png" alt="">
+                        </a></li>
+                  </ul>
+               </span>
+            </div>
+         </div>
+
+         <div class="footer_bottom_wrap">
+            <div class="footer_bottom_container">
+               <ul>
+                  <li class="b_left"><img src="../images/main/f_logo.jpg" alt=""></li>
+                  <li class="b_right">
+                     <p>(주)오뚜기 | 사업자등록번호 : 138-81-03238 | 대표이사 황성만 |</p>
+                     <p>주소 (14060) 경기도 안양시 동안구 흥안대로 405 (평촌동 160)오뚜기 고객상담실 : 080-024-2311</p>
+                     <p>오뚜기라면 고객상담실 : 080-088-1212 (월~금 08:30~17:00)</p>
+                     <br>
+                     <p>Copyright ⓒ OTTOGI CORPORATION.,Ltd All Rights Reserved.</p>
+                  </li>
+               </ul>
+               <div class="b_last_img">
+                  <img src="../images/main/footer_b_img1.gif" alt="">
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+</body>
+<script>
+   // button Top
+   var btnTop = document.querySelector('.btn_top');
+
+   window.addEventListener("scroll", function () {
+      var scrollY = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollY > 180) {
+         btnTop.classList.add("on");
+      } else {
+         btnTop.classList.remove("on");
+      }
+   });
+</script>
+
+</html>

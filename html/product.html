@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제품 정보</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="../css/product.css">
+    <!-- <link rel="stylesheet" href="../css/main.css"> -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Script -->
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/main.js"></script>
+    <!-- Favicon -->
+    <link rel="icon" href="../images/common/favicon.ico">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body style="min-width: 1600px;">
+    <div class="header_wrap">
+        <div class="ottugi_title">
+            <h1>오뚜기</h1>
+            <a href="../index.html">
+                <img src="../images/main/ottugi_logo.svg" alt="">
+            </a>
+        </div>
+        <div class="header_container">
+            <div class="header_all_wrap">
+                <nav class="header_nav">
+                    <ul>
+                        <li><a href="./about.html">회사소개</a>
+                            <ul>
+                                <li><a href="./about.html">회사개요*</a></li>
+                                <li><a href="./business.html">사업소개*</a></li>
+                                <li><a href="./ceo.html">CEO 메세지*</a></li>
+                                <li><a href="./history.html">연혁*</a></li>
+                                <li><a href="./maps.html">오시는길*</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">ESG경영</a>
+                            <ul>
+                                <li><a href="#none">Overview</a></li>
+                                <li><a href="./ESG.html">ESG경영소개*</a></li>
+                                <li><a href="#none">환경</a></li>
+                                <li><a href="#none">사회</a></li>
+                                <li><a href="#none">지배구조</a></li>
+                                <li><a href="#none">사회공헌</a></li>
+                                <li><a href="#none">동반성장</a></li>
+                                <li><a href="#none">보고서및정책</a></li>
+                                <li><a href="#none">ESG Data</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./product.html">제품이야기</a>
+                            <ul>
+                                <li><a href="./product.html">제품정보*</a></li>
+                                <li><a href="./product_new.html">신제품*</a></li>
+                                <li><a href="./recipe.html">인기레시피*</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">브랜드경험</a>
+                            <ul>
+                                <li><a href="#none">Overview</a></li>
+                                <li><a href="#none">공식캐릭터</a></li>
+                                <li><a href="#none">브랜드공간</a></li>
+                                <li><a href="#none">공장견학</a></li>
+                                <li><a href="#none">공모전</a></li>
+                                <li><a href="#none">페스티벌</a></li>
+                                <li><a href="#none">이벤트</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#none">홍보센터</a>
+                            <ul>
+                                <li><a href="./notice.html">공지사항*</a></li>
+                                <li><a href="#none">오뚜기뉴스룸</a></li>
+                                <li><a href="#none">언론보도</a></li>
+                                <li><a href="#none">CF스토리</a></li>
+                                <li><a href="#none">칼럼</a></li>
+                                <li><a href="#none">투자정보</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./customer.html">고객서비스</a>
+                            <ul>
+                                <li><a href="./customer.html">고객의 소리*</a></li>
+                                <li><a href="#none">접수내역조회</a></li>
+                                <li><a href="#none">고객상담 프로세스</a></li>
+                                <li><a href="#none">고객만족활동</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- 랭귀지, 챗봇등 -->
+                <div class="lang_menu_btn">
+                    <a href="#none">
+                        <img src="../images/main/free-icon-menu-3502458.png" alt="">
+                    </a>
+                </div>
+                <div class="lang">
+                    <div class="lang_down">
+                        <a href="#none">KR
+                            <img src="../images/main/lang_down.svg" alt="">
+                        </a>
+                        <div class="lang_list">
+                            <p><a href="#none">KR</a></p>
+                            <p><a href="#none">EN</a></p>
+                        </div>
+                    </div>
+                    <div class="ottugi_search">
+                        <a href="#none"><img src="../images/main/ottugi_search.svg" alt=""></a>
+                    </div>
+                    <div class="ottugi_chat">
+                        <a href="#none"><img src="../images/main/ottugi_chatbot.svg" alt=""></a>
+                    </div>
+                    <div class="ottugi_mall">
+                        <a href="#none"><img src="../images/main/ottugi_mall.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <!-- 반응형 토글 버튼 -->
+            <div class="toggle_btn">
+                <a href="#none">
+                    <img src="../images/main/littlemenu.svg" alt="">
+                </a>
+            </div>
+            <!-- 드롭다운메뉴 배경 -->
+            <div class="nav_bg"></div>
+        </div>
+    </div>
+
+    <section class="main">
+        <h2>제품 이야기</h2>
+        <p>(주)오뚜기 임직원은 식품을 통해 인류의 건강과 행복을 추구하고 있습니다.</p>
+    </section>
+
+    <div class="container">
+        <div class="path">
+            <div class="text-right right2">
+                <!-- <a href="" class="breadcruma">홈</a>
+                <a href="" class="breadcrumb">제품이야기</a>
+                <a href="" class="breadcrumb">제품 정보</a> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="product_cat">
+        <div class="search_box">
+            <form action="" target="_blank">
+                <label for="" class="hide">검색어 입력</label>
+                <input type="text" title="검색" class="inp_base" placeholder="오뚜기몰에서 상품을 찾아보세요.">
+                <button type="button" class="btn_del">
+                    <span class="hide">삭제</span></button>
+                <button class="btn_search">
+                    <span class="hide">검색하기</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="main_visual">
+            <p>PRODUCT INFO</p>
+        </div>
+
+        <div class="prd-wrap">
+            <div class="prd-item n1">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product1.jpg" alt="라면/컵누들/곤누들">
+                    </a>
+                </div>
+                <p>#라면/컵누들/곤누들</p>
+            </div>
+
+            <div class="prd-item n2">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product2.jpg" alt="밥/죽/누룽지">
+                    </a>
+                </div>
+                <p>#밥/죽/누룽지</p>
+            </div>
+
+            <div class="prd-item n3">
+                <div class="prd-img">
+                    <a href="#none"><img src="/images/product/product3.jpg" alt="카레/짜장/간편렌지">
+                    </a>
+                </div>
+                <p>#카레/짜장/간편렌지</p>
+            </div>
+        </div>
+
+        <div class="prd-wrap">
+            <div class="prd-item n4">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product4.jpg" alt="소스/드레싱/양념/식초">
+                    </a>
+                </div>
+                <p>#소스/드레싱/양념/식초</p>
+            </div>
+
+
+            <div class="prd-item n5">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product5.jpg" alt="탕/국/찌개/간편조리">
+                    </a>
+                </div>
+                <p>#탕/국/찌개/간편조리</p>
+            </div>
+
+            <div class="prd-item n6">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product6.jpg" alt="피자/만두/치킨">
+                    </a>
+                </div>
+                <p>#피자/만두/치킨</p>
+            </div>
+        </div>
+
+        <div class="prd-wrap">
+            <div class="prd-item n7">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product7.jpg" alt="파스타/스프/리조또">
+                    </a>
+                </div>
+                <p>#파스타/스프/리조또</p>
+            </div>
+
+            <div class="prd-item n8">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product8.jpg" alt="가루/향신료">
+                    </a>
+                </div>
+                <p>#가루/향신료</p>
+            </div>
+
+            <div class="prd-item n9">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product9.jpg" alt="캔/통조림/오일">
+                    </a>
+                </div>
+                <p>#캔/통조림/오일</p>
+            </div>
+        </div>
+
+        <div class="prd-wrap">
+            <div class="prd-item n10">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product10.jpg" alt="김/미역/수산물">
+                    </a>
+                </div>
+                <p>#김/미역/수산물</p>
+            </div>
+
+
+            <div class="prd-item n11">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product11.jpg" alt="쨈/시럽/다류/마가린">
+                    </a>
+                </div>
+                <p>#쨈/시럽/다류/마가린</p>
+            </div>
+
+
+            <div class="prd-item n12">
+
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product12.jpg" alt="떡볶이/핫도그/간식">
+                    </a>
+                </div>
+                <p>#떡볶이/핫도그/간식</p>
+            </div>
+        </div>
+
+        <div class="prd-wrap">
+            <div class="prd-item n13">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product13.jpg" alt="국수/당면/면류">
+                    </a>
+                </div>
+                <p> #국수/당면/면류</p>
+            </div>
+
+
+            <div class="prd-item n14">
+                <div class="prd-img">
+                    <a href="#none">
+                        <img src="/images/product/product14.jpg" alt="강황환/홍삼/선물세트">
+                    </a>
+                </div>
+                <p>
+                    #강황환/홍삼/선물세트
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed_area">
+        <a href="#" class="btn_top on">
+            <span class="sr_only">상단으로 이동하기</span>
+        </a>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer_wrap">
+            <div class="footer_top_container">
+                <div class="footer_top">
+                    <span class="f_left">
+                        <ul>
+                            <li><a href="#none"><strong>개인정보처리방침</strong></a></li>
+                            <li><a href="#none">고객상담</a></li>
+                            <li><a href="#none">찾아오시는 길</a></li>
+                            <li><a href="#none">오뚜기몰</a></li>
+                            <li><a href="#none">고객상담 챗봇</a></li>
+                        </ul>
+                    </span>
+                    <span class="f_right">
+                        <ul>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer1.png" alt="">
+                                </a></li>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer2.png" alt="">
+                                </a></li>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer3.png" alt="">
+                                </a></li>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer4.png" alt="">
+                                </a></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+
+            <div class="footer_bottom_wrap">
+                <div class="footer_bottom_container">
+                    <ul>
+                        <li class="b_left"><img src="../images/main/f_logo.jpg" alt=""></li>
+                        <li class="b_right">
+                            <p>(주)오뚜기 | 사업자등록번호 : 138-81-03238 | 대표이사 황성만 |</p>
+                            <p>주소 (14060) 경기도 안양시 동안구 흥안대로 405 (평촌동 160)오뚜기 고객상담실 : 080-024-2311</p>
+                            <p>오뚜기라면 고객상담실 : 080-088-1212 (월~금 08:30~17:00)</p>
+                            <br>
+                            <p>Copyright ⓒ OTTOGI CORPORATION.,Ltd All Rights Reserved.</p>
+                        </li>
+                    </ul>
+                    <div class="b_last_img">
+                        <img src="../images/main/footer_b_img1.gif" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <div class="btnTop">
+        <a href="product.html" class="btn_btmTop">TOP</a>
+    </div> -->
+
+</body>
+<script>
+    // button Top
+    var btnTop = document.querySelector('.btn_top');
+
+    window.addEventListener("scroll", function () {
+        var scrollY = window.scrollY || document.documentElement.scrollTop;
+
+        if (scrollY > 180) {
+            btnTop.classList.add("on");
+        } else {
+            btnTop.classList.remove("on");
+        }
+    });
+</script>
+
+</html>

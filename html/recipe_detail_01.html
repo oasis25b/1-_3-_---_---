@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>호두마늘볶음</title>
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="./js/main.js"></script>
+  <!-- Favicon -->
+  <link rel="icon" href="./images/favicon.ico">
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    /* Reset */
+    body,
+    header,
+    main,
+    footer,
+    section,
+    nav,
+    div,
+    h1,
+    h2,
+    h3,
+    p,
+    ul,
+    li,
+    dl,
+    dt,
+    dd,
+    form,
+    fieldset,
+    legend,
+    input,
+    button {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    address {
+      font-style: normal;
+    }
+
+    fieldset,
+    img {
+      border: none;
+    }
+
+    img {
+      vertical-align: bottom;
+      border: none;
+    }
+
+    input,
+    button {
+      vertical-align: center;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .hide {
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden;
+      margin: -1px;
+      border: 0 none !important;
+      text-indent: -9999px;
+      position: absolute;
+    }
+
+    /* Color */
+    :root {
+      --color-ottogi-yellow: var(--color-yellow);
+      --color-ottogi-red: var(--color-red);
+      --color-ottogi-blue: var(--color-blue);
+      --color-title: var(--color-title);
+      --color-content: var(--color-content);
+      --color-desc: var(--color-desc);
+      --color-border: var(--color-border);
+
+      /* Colors */
+      --color-yellow: rgb(255, 243, 0);
+      --color-red: rgb(211, 35, 58);
+      --color-blue: rgb(10, 48, 158);
+      --color-title: #333333;
+      --color-content: #222222;
+      --color-desc: #666666;
+      --color-border: #e5e5e5;
+    }
+
+    /* Common */
+    html {
+      width: 100%;
+      scroll-behavior: smooth;
+      font-family: "Nanum Gothic", sans-serif;
+    }
+
+    /* Header */
+    .header {
+      height: inherit;
+      background-color: var(--color-ottogi-yellow);
+      position: relative;
+    }
+
+    .header img {
+      display: block;
+      width: 101px;
+      height: 98px;
+      margin: 0 auto;
+    }
+
+    /* Main */
+    .content {
+      display: flex;
+      justify-content: center;
+      padding: 0 24px;
+      min-width: 1200px
+    }
+
+    .mainImage {
+      width: 100%;
+      position: relative;
+      clear: both;
+    }
+
+    .mainImage img {
+      width: 100%;
+    }
+
+    /* Main - 요리 정보 */
+    .detailInfo {
+      width: 70%;
+      box-sizing: border-box;
+      border-right: 1px solid var(--color-border);
+    }
+
+    .detailInfo>h2 {
+      color: var(--color-title);
+      font-size: 45px;
+      margin-top: 80px;
+    }
+
+    .detailInfo .Tag {
+      margin: 32px 0;
+    }
+
+    .detailInfo .Tag ul {
+      display: flex;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .detailInfo .Tag ul a {
+      font-size: 20px;
+      line-height: 25px;
+      color: #777777;
+      padding: 5px 20px 7px;
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      background: #fff;
+    }
+
+    .detailInfo .Tag ul a:hover {
+      color: white;
+      background-color: var(--color-ottogi-red);
+    }
+
+    .detailInfo p {
+      color: var(--color-desc);
+      font-size: 24px;
+      font-weight: lighter;
+    }
+
+    /* Main - 레시피 */
+    .ContentArea {
+      min-height: 500px;
+      padding: 55px 0;
+      margin-top: 100px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .ContentArea h2 {
+      color: var(--color-title);
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .ContentArea .recipe img {
+      width: 640px;
+      height: 427px;
+      margin-bottom: 24px;
+    }
+
+    .recipe .recipe_number {
+      color: var(--color-ottogi-red) !important;
+      font-weight: 700 !important;
+    }
+
+    .recipe .recipe_method {
+      color: var(--color-desc);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 32px;
+    }
+
+    /* Main - 우측 콘텐츠 */
+    .detailRight {
+      width: 30%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .detailRight .ingredients {
+      padding: 356px 30px 50px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .detailRight .made-item {
+      padding: 24px 30px;
+      position: relative;
+      border-bottom: 1px solid var(--color-border)
+    }
+
+    .comment {
+      padding: 24px 30px 50px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .comment01 {
+      width: 24%;
+      float: left;
+      font-size: 14px;
+      font-weight: 500;
+      color: #111;
+    }
+
+    .comment02 {
+      margin: 1px 10px 0 15px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #666;
+      letter-spacing: -0.5px;
+    }
+
+    .comment03 {
+      display: block;
+      width: 300px;
+      height: 50px;
+      padding-top: 12px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    .comm_detail {
+      width: 320px;
+      height: 92px;
+      border: 2px solid var(--color-border);
+      border-radius: 15px;
+      padding: 16px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .comm_detail>img {
+      width: 16px;
+      position: absolute;
+      top: 17px;
+      right: 80px;
+      cursor: pointer;
+    }
+
+    .comment_submit {
+      width: 128px;
+      height: 30px;
+      background-color: var(--color-ottogi-red);
+      border: 0 none;
+      border-radius: 15px;
+      color: white;
+      margin-bottom: 24px;
+      position: absolute;
+      top: 27px;
+      left: 90px;
+    }
+
+    /* Main - 조리 정보 */
+    /* stats01 */
+    .recipe-stats {
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px;
+      box-sizing: border-box;
+      text-align: center;
+      color: #fff;
+      background: #bf132b;
+      position: absolute;
+      top: -40px;
+      left: 0px;
+    }
+
+    .recipe-stats .bookmark {
+      width: 28px;
+      position: absolute;
+      top: -5px;
+      left: 8px;
+    }
+
+    .stats01 {
+      width: 330px;
+      height: 114px;
+    }
+
+    .stats01 ul {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .stats01 li {
+      width: 30%;
+    }
+
+    .stats01 ul li p {
+      width: 111px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stats01 .desc01 {
+      font-size: 16px;
+      line-height: 1.3;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .stats01 .desc02 {
+      font-size: 60px;
+      font-weight: bold;
+      line-height: 1;
+      letter-spacing: 0;
+      color: #fff;
+    }
+
+    .stats01 .desc03 {
+      background: url(/images/product/icon_clock.png) no-repeat;
+      background-size: 20px 20px;
+      background-position: 24px center;
+    }
+
+    .stats01 .desc03_person {
+      background: url(/images/product/icon_person.png) no-repeat;
+      background-size: 20px 20px;
+      background-position: 24px center;
+    }
+
+    /* Main - 조리 정보 */
+    /* stats02 */
+    .stats02 {
+      width: 330px;
+      height: 63px;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .stats02_btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 0 none;
+      border-radius: 4px;
+    }
+
+    .stats02_btn .nutri {
+      width: 240px;
+      height: 63px;
+      background: #f64646 url(/images/product/icon_nutri.png) no-repeat 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: white;
+    }
+
+    .stats02_btn .nutri i {
+      background: url(/images/product/icon_nutri_toggle.png) no-repeat;
+      width: 14px;
+      height: 8px;
+      display: block;
+      content: "";
+      position: absolute;
+      right: 142px;
+      top: 196px;
+    }
+
+    .stats02_btn .print {
+      width: 73px;
+      height: 63px;
+      font-size: 0;
+      background: #f64646 url(/images/product/icon_print.png) no-repeat center;
+      cursor: pointer;
+    }
+
+    /* Main - 조리 정보 */
+    /* stats03 */
+    .stats03 {
+      width: 330px;
+    }
+
+    .stats03 ul {
+      width: 331px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .stats03 ul li {
+      width: 48%;
+      height: 67px;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid var(--color-ottogi-red);
+      border-radius: 4px;
+    }
+
+    .state03_03>img {
+      width: 46px;
+    }
+
+    .share_close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      cursor: pointer;
+    }
+
+    /* Main - 레시피 영양 정보 */
+    .popChart {
+      display: block;
+      width: 100%;
+      margin-left: -200px;
+      border: 1px solid #333;
+      box-sizing: border-box;
+      background: white;
+      position: absolute;
+      top: 228px;
+      left: 200px;
+      z-index: 999;
+      display: none;
+    }
+
+    .popChart .table-header {
+      width: 100%;
+      height: 30%;
+      padding: 24px;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--color-ottogi-red);
+      color: var(--color-ottogi-red);
+      font-size: 23px;
+      line-height: 24px;
+      text-align: left;
+    }
+
+    .popChart .table-content {
+      padding: 20px;
+      font-size: 14px;
+      color: var(--color-desc);
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    .popChart .nutri_info {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .popChart .nutri_info th {
+      width: 80%;
+      padding: 10px 20px;
+      border-bottom: 1px solid #efefef;
+      font-size: 16px;
+      color: #333;
+      font-weight: normal;
+      text-align: left;
+    }
+
+    .popChart .nutri_info td {
+      padding: 10px 20px;
+      border-bottom: 1px solid #efefef;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .popChart .nutri_info tr {
+      display: table-row;
+      vertical-align: inherit;
+      border-color: inherit;
+    }
+
+    .popChart .chart-close>img {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+    }
+
+    /* Main - 레시피 관련 제품 */
+    .made-item {
+      position: relative;
+    }
+
+    .link img {
+      width: 315px;
+      transition: 300ms;
+    }
+
+    .made-item-hover {
+      opacity: 0;
+      display: none;
+    }
+
+    .ingre_title {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--color-ottogi-red);
+      margin: 40px 0 10px;
+      padding-left: 15px;
+      position: relative;
+    }
+
+    .ingre_desc {
+      color: #666;
+      font-size: 19px;
+      padding-left: 15px;
+    }
+
+    .made-item-cont {
+      position: absolute;
+      top: 91px;
+      width: 315px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .made-item-cont a img {
+      width: 55px;
+    }
+
+    .made-item-hover {
+      display: none;
+      width: 315px;
+      height: 315px;
+      background-color: rgba(247, 247, 247, 80%);
+      position: absolute;
+      top: 60px;
+    }
+
+    .made-item .link:hover {
+      transition: opacity 0.8s ease;
+      opacity: 1;
+      display: block;
+    }
+
+    .fixed_area {
+      right: 10px;
+      width: 80px;
+      position: fixed;
+      bottom: 20px;
+      z-index: 200;
+    }
+
+    .btn_top.on,
+    .btn_close.on {
+      display: block;
+    }
+
+    .btn_top {
+      width: 80px;
+      height: 72px;
+      background: url(/images/product/btn_top_pc.svg) no-repeat 0 0 / 100%;
+      filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+    }
+
+    .btn_close {
+      filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+    }
+
+    .btn_close.hide {
+      display: none;
+    }
+
+    .sr_only {
+      position: absolute;
+      top: -99999px;
+      font-size: 0;
+      height: 0;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+      color: white;
+      position: fixed;
+      bottom: 96px;
+      right: -68px;
+      z-index: 200;
+      font-size: 60px;
+      border-radius: 50%;
+      background-color: var(--color-red);
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header" class="header">
+    <a href="#none" class="logo">
+      <h1 class="hide">오뚜기</h1>
+      <img src="/images/product/Logo.png" alt="오뚜기">
+    </a>
+  </header>
+  <main id="main" class="main">
+    <div id="contents">
+      <div class="mainImage">
+        <img src="/images/product/img_main_recipeDetail01.jpg" alt="호두마늘볶음 완성 사진">
+      </div>
+
+      <div class="content">
+        <div class="detailInfo">
+          <h2>호두마늘볶음</h2>
+          <div class="Tag">
+            <ul>
+              <li><a href="#none">#밑반찬</a></li>
+              <li><a href="#none">#매실청</a></li>
+              <li><a href="#none">#단짠단짠</a></li>
+              <li><a href="#none">#마늘의민족</a></li>
+            </ul>
+          </div>
+          <p>
+            고소한 맛으로 즐기던 호두에 달콤짭짤한 맛을 더한 밑반찬이에요.<br>
+            호두와 마늘, 매실청으로 간단하게 끝내는 레시피! 특유의 떫은 맛<br>
+            때문에 호두를 싫어하던 아이들도 바삭하게 볶아준 호두는 맛있다고
+            정말<br />
+            좋아한답니다. 집에 남는 견과류가 있다면 오늘 바로 도전해보시는 건
+            어떨까요?
+          </p>
+
+          <div class="ContentArea">
+            <h2>만드는 방법</h2>
+            <ol class="recipe">
+              <li>
+                <p>
+                  <img src="/images/product/img_recipeDetail_step01.jpg" class="recipe-image" alt="조리 단계 1번">
+                </p>
+                <p class="recipe_number">Step 1</p>
+                <p class="recipe_method">마늘을 반으로 썬다.</p>
+              </li>
+              <li>
+                <p>
+                  <img src="/images/product/img_recipeDetail_step02.jpg" class="recipe-image" alt="조리 단계 2번">
+                </p>
+                <p class="recipe_number">Step 2</p>
+                <p class="recipe_method">
+                  후라이팬에 올리브유를 두르고 마늘을 약한 불에 굽다가,<br>마늘의
+                  색이 살짝 노릇해지면 매실청을 넣는다.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <img src="/images/product/img_recipeDetail_step03.jpg" class="recipe-image" alt="조리 단계 3번">
+                </p>
+                <p class="recipe_number">Step 3</p>
+                <p class="recipe_method">호두를 넣어 3분간 볶는다.</p>
+              </li>
+              <li>
+                <p>
+                  <img src="/images/product/img_recipeDetail_step04.jpg" class="recipe-image" alt="조리 단계 4번">
+                </p>
+                <p class="recipe_number">Step 4</p>
+                <p class="recipe_method">
+                  불을 끄고 간장과 꿀을 넣어 버무린다.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <img src="/images/product/img_recipeDetail_step05.jpg" class="recipe-image" alt="조리 단계 5번">
+                </p>
+                <p class="recipe_number">Step 5</p>
+                <p class="recipe_method">깨와 참기름을 둘러 완성한다.</p>
+              </li>
+              <li>
+                <p>
+                  <img src="/images/product/img_recipeDetail_step06.jpg.jpg" class="recipe-image" alt="조리 완성">
+                </p>
+                <p class="recipe_number">Step 6</p>
+                <p class="recipe_method">완성!</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="detailRight">
+          <div class="recipe-stats">
+            <img src="/images/product/icon_bookmark.png" alt="북마크 아이콘" class="bookmark">
+            <div class="stats01">
+              <ul>
+                <li>
+                  <p>
+                    <span class="desc01">준비시간</span>
+                    <span class="desc02">5</span>
+                    <span class="desc03">분</span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <span class="desc01">조리시간</span>
+                    <span class="desc02">7</span>
+                    <span class="desc03">분</span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <span class="desc01">인분수</span>
+                    <span class="desc02">4</span>
+                    <span class="desc03_person">인분</span>
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="stats02">
+              <div class="stats02_btn" onclick="popChartOpen()">
+                <button class="stats02_btn nutri" href="#none">
+                  영양정보 알아보기
+                  <i class="toggle"></i>
+                </button>
+                <a class="stats02_btn print" href="#print" onclick="print()">프린트 하기</a>
+              </div>
+              <div class="popChart">
+                <h2 class="table-header">레시피 영양정보</h2>
+                <div class="table-content">
+                  <table class="nutri_info">
+                    <caption class="hide">
+                      레시피 영양정보
+                    </caption>
+                    <tbody>
+                      <tr>
+                        <th scope="row">칼로리(kcal)</th>
+                        <td>228</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">총 지방(g)</th>
+                        <td>17.4</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">포화지방(g)</th>
+                        <td>1.6</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">콜레스테롤(mg)</th>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">나트륨(mg)</th>
+                        <td>328.4</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">탄수화물(g)</th>
+                        <td>15.8</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">식이섬유(g)</th>
+                        <td>2.5</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">단백질(g)</th>
+                        <td>4.9</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">비타민A(ug RAE)</th>
+                        <td>2.5</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">비타민C(mg)</th>
+                        <td>6</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">칼슘(mg)</th>
+                        <td>26.7</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p>
+                    해당 레시피 1인분당 예상되는 영양정보이며, 식재료의
+                    생산방법, 사용부위 및 사용량 등 기타 변수에 따라 차이가
+                    발생할 수 있습니다.
+                  </p>
+                </div>
+                <a href="#none" class="chart-close" onclick="popChartClose()">
+                  닫기<img src="/images/product/btn_chart_close.png" alt="닫기 버튼">
+                </a>
+              </div>
+            </div>
+            <div class="stats03">
+              <ul>
+                <li>
+                  <a href="mailto:이메일주소" class="state03_01">
+                    <img src="/images/product/stats03_1.png" alt="e-mail">
+                  </a>
+                </li>
+                <li>
+                  <a href onclick="copy_trackback(this.href); return false;" class="state03_02">
+                    <img src="/images/product/stats03_02.png" alt="URL">
+                  </a>
+                </li>
+                <li>
+                  <a href class="state03_03">
+                    <img src="/images/product/stats03_03_heart.png" alt="좋아요">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ingredients">
+            <h2>레시피 재료</h2>
+            <p class="ingre_title">-필수 재료</p>
+            <p class="ingre_desc">
+              호두 200g, 마늘 20톨, 오뚜기 프레스코 압착올리브유 1T, 오뚜기,
+              매실청 1/2T, 이금기 팬더 양조간장 1.5T, 오뚜기 요리용꿀 2T
+            </p>
+            <p class="ingre_title">-선택 재료</p>
+            <p></p>
+            <p class="ingre_desc">
+              오뚜기 옛날 볶음참깨 1t, 오뚜기 고소한참기름 1/2T
+            </p>
+          </div>
+
+          <div class="made-item">
+            <h2>레시피 관련제품</h2>
+            <div class="link">
+              <a href="https://www.ottogimall.co.kr/front/product/426" target="_blank">
+                <img src="/images/product/img_recipeDetail_ingre.jpg" alt="레시피 관련 제품">
+              </a>
+              <div class="made-item-hover">
+                <div class="made-item-cont">
+                  <a href="https://www.ottogimall.co.kr/front/product/426" target="_blank">
+                    <img src="/images/product/icon_basket.png" alt="장바구니 넣기">
+                  </a>
+                  <p>
+                    관련제품은 오뚜기몰과<br>인근 매장에서 구매 가능합니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <h2>댓글</h2>
+            <button class="comment_submit" type="submit">등록하기</button>
+            <div class="comm_detail">
+              <img src="/images/product/btn_thumbs.png" alt="좋아요">
+              <p class="comment01">오*****</p>
+              <p class="comment02">2023-09-23 07:50:39</p>
+              <p class="comment03">레시피 그대로 따라했는데 아이들이 잘 먹어요</p>
+            </div>
+            <div class="comm_detail">
+              <img src="/images/product/btn_thumbs.png" alt="좋아요">
+              <p class="comment01">레****</p>
+              <p class="comment02">2023-10-07 18:50:39</p>
+              <p class="comment03">맛있어요</p>
+            </div>
+            <div class="comm_detail">
+              <img src="/images/product/btn_thumbs.png" alt="좋아요">
+              <p class="comment01">나***</p>
+              <p class="comment02">2023-12-23 12:50:39</p>
+              <p class="comment03">마늘이 신의 한수</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fixed_area">
+      <a href="#" class="btn_top on">
+        <span class="sr_only">상단으로 이동하기</span>
+      </a>
+    </div>
+    <div class="fixed_area">
+      <a href="#none" class="btn_close">
+        <span class="material-symbols-outlined ">
+          cancel
+        </span>
+        <span class="sr_only">창닫기</span>
+      </a>
+    </div>
+  </main>
+  <footer></footer>
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script>
+    // 영양정보 Pop-Up
+    const btn_chartOpen = document.querySelector(".nutri");
+    const btn_chartClose = document.querySelector(".chart-close");
+    const popChart = document.querySelector(".popChart");
+    btn_chartClose.addEventListener(
+      "click",
+      () => (popChart.style.display = "none")
+    );
+    btn_chartOpen.addEventListener(
+      "click",
+      () => (popChart.style.display = "block")
+    );
+
+    // 레시피 공유하기
+    function copy_trackback(address) {
+      var IE = document.all ? true : false;
+      if (IE) {
+        if (confirm("이 글의 주소를 클립보드에 복사하시겠습니까?"))
+          window.clipboardData.setData("Text", address);
+      } else {
+        temp = prompt(
+          "이 글의 주소입니다. Ctrl+C를 눌러 클립보드로 복사하세요",
+          address
+        );
+      }
+    }
+
+    var btnTop = document.querySelector('.btn_top');
+
+    document.addEventListener("scroll", function () {
+      var scrollY = document.documentElement.scrollTop;
+
+      if (scrollY > 180) {
+        btnTop.classList.add("on");
+      } else {
+        btnTop.classList.remove("on");
+      }
+    });
+
+    var btnClose = document.querySelector('.material-symbols-outlined');
+
+    document.addEventListener("scroll", function () {
+      var scrollY = document.documentElement.scrollTop;
+
+      if (scrollY > 180) {
+        btnClose.classList.remove("hide");
+      } else {
+        btnClose.classList.add("hide");
+      }
+    });
+
+    btnClose.addEventListener("click", function () {
+      window.close(); // 현재 창을 닫음
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고객의 소리</title>
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="./js/main.js"></script>
+  <!-- Favicon -->
+  <link rel="icon" href="/images/common/favicon.ico">
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Lato:wght@300;400;700;900&family=Noto+Sans+KR&family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@300&display=swap');
+
+    /* Reset */
+    body,
+    header,
+    main,
+    footer,
+    section,
+    nav,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    ol,
+    ul,
+    li,
+    dl,
+    dt,
+    dd,
+    form,
+    fieldset,
+    legend,
+    input,
+    button {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    address {
+      font-style: normal;
+    }
+
+    fieldset,
+    img {
+      border: none;
+    }
+
+    img {
+      vertical-align: bottom;
+      border: none;
+    }
+
+    input,
+    button {
+      vertical-align: center;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .hide {
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden;
+      margin: -1px;
+      border: 0 none !important;
+      text-indent: -9999px;
+      position: absolute;
+    }
+
+    /* Color */
+    :root {
+      --color-ottogi-yellow: var(--color-yellow);
+      --color-ottogi-red: var(--color-red);
+      --color-ottogi-blue: var(--color-blue);
+      --color-title: var(--color-title);
+      --color-content: var(--color-content);
+      --color-border: var(--color-border);
+
+      /* Colors */
+      --color-yellow: rgb(255, 243, 0);
+      --color-red: rgb(211, 35, 58);
+      --color-blue: rgb(10, 48, 158);
+      --color-title: #333333;
+      --color-content: #222222;
+      --color-border: #e5e5e5;
+    }
+
+    /* Skip Menu */
+    .skipMenu {
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0;
+      z-index: 3000;
+      display: none;
+    }
+
+    .skipMenu:focus {
+      width: 100%;
+      height: inherit;
+      padding: 20px 0;
+      color: #ffffff;
+      background: none repeat scroll 0 0 var(--color-ottogi-red);
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      z-index: 100;
+    }
+
+    /* Layout */
+    html,
+    body {
+      scroll-behavior: smooth;
+      font-family: 'Nanum Gothic', sans-serif;
+    }
+
+    .header_wrap {
+      width: 100%;
+      height: 180px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: url(../images/main/wave-haikei.svg);
+    }
+
+    .header_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      padding-right: 60px;
+      /* background: red; */
+    }
+
+    .container {
+      margin: 0 auto;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0;
+    }
+
+    .main {
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .main_inner {
+      min-width: 1200px;
+      /* padding: 0 180px; */
+      margin: 0 auto;
+    }
+
+    /* Common */
+    h2 {
+      color: var(--color-title);
+      font-size: 36px;
+      text-align: left;
+      padding: 0 0 40px;
+      /* margin: 0 auto 24px; */
+    }
+
+
+    /* Header */
+    .header_all_wrap {
+      position: relative;
+    }
+
+    .header_nav>ul>li>a {
+      text-decoration: none;
+      color: black;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all ease-in 0.3s;
+    }
+
+    .header_nav>ul>li>a:hover {
+      color: #DF2D32;
+    }
+
+    .header_nav>ul>li>ul>li>a {
+      text-decoration: none;
+      color: rgb(82, 82, 82);
+      font-size: 15px;
+    }
+
+    .header_nav>ul>li>ul>li>a:hover {
+      color: #DC2F34;
+      font-weight: bold;
+      border-bottom: 2px solid #DC2F34;
+    }
+
+    .ottugi_title {
+      margin-left: 60px;
+    }
+
+    .ottugi_title h1 {
+      text-indent: -9999px;
+    }
+
+    .ottugi_title img {
+      width: 70px;
+    }
+
+    .header_nav ul ul {
+      position: absolute;
+      top: 110px;
+      height: 460px;
+      display: none;
+      /* background: linear-gradient(0deg, rgba(150, 152, 124, 1) 0%, rgba(255, 242, 0, 1) 46%, rgba(254, 241, 0, 1) 99%); */
+      z-index: 4100;
+    }
+
+    .header_nav>ul {
+      height: 80px;
+      display: flex;
+      margin: 50px 0 0 0;
+      justify-content: space-between;
+      align-items: center;
+      /* background: blue; */
+    }
+
+    .header_nav>ul>li {
+      font-size: 20px;
+      /* height: 60px; */
+      line-height: 40px;
+      padding-right: 60px;
+      /* background: green; */
+    }
+
+    .lang_menu_btn {
+      position: absolute;
+      top: 75px;
+      right: -50px;
+    }
+
+    .lang_menu_btn img {
+      width: 30px;
+    }
+
+    /* 토글 버튼 */
+    .toggle_btn {
+      display: none;
+    }
+
+    .lang {
+      position: absolute;
+      background: #fff;
+      text-align: center;
+      padding: 5px;
+      top: 110px;
+      right: -100px;
+      display: none;
+      border: 1px solid #b8b8b8;
+      border-radius: 10px;
+      z-index: 9999;
+    }
+
+    .lang_down a {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .lang_list {
+      position: absolute;
+      background: #dbdbdb;
+      top: 0px;
+      right: -55px;
+      height: 90px;
+      padding: 10px;
+      display: none;
+      border: 1px solid #b8b8b8;
+      border-radius: 10px;
+      z-index: 4000;
+    }
+
+    .lang_list p {
+      margin-bottom: 5px;
+    }
+
+    .lang_list p:hover {
+      font-weight: bold;
+    }
+
+    .lang_down,
+    .ottugi_search,
+    .ottugi_chat,
+    .ottugi_mall {
+      padding: 8px;
+    }
+
+    .ottugi_mall {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .ottugi_mall img {
+      width: 95px;
+    }
+
+    .nav_bg {
+      position: absolute;
+      top: 170px;
+      left: 0;
+      width: 100%;
+      height: 450px;
+      background: linear-gradient(0deg, rgba(150, 152, 124, 1) 0%, rgba(255, 242, 0, 1) 46%, rgba(254, 241, 0, 1) 99%);
+      display: none;
+      z-index: 4000;
+    }
+
+    /* Main - banner */
+    .banner {
+      width: 100%;
+      min-width: 1440px;
+      background: url(/images/customer/img_mainImage.jpg);
+      border-bottom: 24px solid var(--color-ottogi-red);
+    }
+
+    /* Main - 꼭 읽어주세요 */
+    .guide_wrap {
+      width: 100%;
+      height: inherit;
+      padding: 72px 0;
+      margin-bottom: 72px;
+      background: #f8f8f8;
+    }
+
+    .guide {
+      min-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      position: relative;
+    }
+
+    .guide>h2 {
+      padding: 0;
+      margin: 0;
+    }
+
+    .guide ul {
+      height: 198px;
+      margin-bottom: 24px;
+    }
+
+    .guide ul li {
+      margin-top: 5px;
+      font-size: 16px;
+      line-height: 28px;
+      list-style: circle !important;
+      position: relative;
+    }
+
+    .guide .consumer_dispute {
+      color: var(--color-ottogi-red);
+      font-weight: 700;
+      position: relative;
+    }
+
+    .guide .consumer_dispute img {
+      width: 20px;
+      position: absolute;
+      top: 0;
+      left: 146px;
+    }
+
+    .guide .chat_Bot img {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 0;
+      left: 192px;
+      cursor: pointer;
+    }
+
+    .QnA {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .guide_left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .guide img {
+      width: 240px;
+    }
+
+    /* Main - 문의 접수 방법 버튼 */
+    .submit_method_wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .submit_method {
+      width: 720px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn_voc_call,
+    .btn_voc_web,
+    .btn_voc_chatbot {
+      width: 45%;
+      padding: 8px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      font-size: 32px;
+      font-weight: 500;
+      text-align: center;
+      color: #fff;
+      background-color: var(--color-ottogi-red);
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* MAIN - 고객상담절차 */
+    .process_wrap {
+      width: 100%;
+      height: 398px;
+      margin-bottom: 72px;
+    }
+
+    .precess {
+      display: flex;
+
+      position: relative;
+    }
+
+    .process ul {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 50px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      text-align: center;
+    }
+
+    .process ul li {
+      width: 168px;
+      align-items: center;
+      position: relative;
+    }
+
+    .process ul li img {
+      margin: 0 auto 20px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .process01::after,
+    .process02::after,
+    .process03::after {
+      content: url(/images/customer/img_arrow_process.png);
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: -65px;
+      transform: translateY(-50%);
+    }
+
+    .process ul li dl dt {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 15px 0 12px;
+      color: var(--color-ottogi-red);
+    }
+
+    .process ul li dl dt dd {
+      color: var(--color-title);
+      font-size: 16px;
+      margin: 14px 0;
+    }
+
+    .method {
+      font-size: 16px;
+    }
+
+    .method02::before {
+      content: "";
+      display: block;
+      width: 9px;
+      height: 9px;
+      margin: 5px auto 10px;
+      border-radius: 20px;
+      background: var(--color-ottogi-red);
+    }
+
+    /* Main - 고객상담센터 */
+    .call_info_box {
+      width: 100%;
+      max-width: 1200px;
+      min-width: 608px;
+      padding: 32px;
+      margin-bottom: 72px;
+      box-sizing: border-box;
+      border: 1px solid var(--color-border);
+      background: #f8f8f8;
+      font-size: 28px;
+      letter-spacing: 1px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .call_info_box p {
+      width: 640px;
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+
+    .call_num01 {
+      width: 300px;
+    }
+
+    .call_num {
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--color-content);
+    }
+
+    .call_info_box img {
+      width: 40px;
+    }
+
+    .center_time {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--color-content);
+    }
+
+    /* Main - 문의 접수 */
+    .questions {
+      display: block;
+      margin-bottom: 72px;
+      flex-wrap: wrap;
+      font-size: 16px;
+    }
+
+    .questions_inner {
+      padding: 0 18px;
+    }
+
+    .question {
+      width: 100%;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .question label {
+      display: block;
+      margin-bottom: 16px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .submit_required {
+      font-weight: 700;
+      color: var(--color-ottogi-red);
+    }
+
+    .question input {
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      background-color: #f8f8f8;
+      font-size: 14px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      margin-left: 15px;
+      margin-right: 15px;
+      text-align: center;
+    }
+
+    .question input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--color-ottogi-red);
+      box-shadow: 0 0 5px rgba(220, 44, 34, 0.5);
+    }
+
+    #btn_submit {
+      display: block;
+      width: 242px;
+      height: 76px;
+      padding: 10px;
+      margin: 12px auto 24px;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-title);
+      background-color: var(--color-ottogi-yellow);
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+    }
+
+    /* 문항 - 문의 유형 */
+    .question.type {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 50px;
+    }
+
+    .form_wrap {
+      display: flex;
+      align-items: center;
+    }
+
+    .form_wrap>label {
+      margin: 0;
+    }
+
+    .choice {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 24px;
+      width: 80%;
+      padding: 8px 16px;
+      box-sizing: border-box;
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      text-align: center;
+    }
+
+    /* 문항 - 거주 국가 */
+    .isLivingAbroad {
+      display: flex;
+    }
+
+    .isLivingAbroad span {
+      width: 200px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .isLivingAbroad span label {
+      width: 50%;
+      margin: 0 !important;
+    }
+
+    .country_choice {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+      padding: 8px 16px;
+      box-sizing: border-box;
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      text-align: center;
+    }
+
+    .country_choice span {
+      display: flex;
+      align-items: center;
+    }
+
+    /* 문항 - 이메일 */
+    .noEmailYn {
+      padding: 8px 0 0 8px;
+      box-sizing: border-box;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--color-content);
+      font-size: 14px;
+      font-weight: 0 !important;
+    }
+
+    .noEmailYn>label {
+      margin: 0;
+    }
+
+    /* 상세 문의 내용 */
+    textarea {
+      width: 100%;
+      height: 240px;
+      padding: 15px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ddd;
+      border-radius: 15px;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 23px;
+      resize: none;
+    }
+
+    /* 주소 검색 */
+    #address {
+      width: 70% !important;
+      margin-bottom: 8px;
+    }
+
+    #zipCodeSearch {
+      width: 28%;
+      height: 48px;
+      position: absolute;
+      right: 0;
+      border: 2px solid var(--color-border);
+      border-radius: 100px;
+      background-color: white;
+      color: black;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 18px;
+    }
+
+    /* 파일 첨부 */
+    .file {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .file .input-file {
+      width: 80%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-end
+    }
+
+    .file .input-file a>input {
+      border-radius: 0;
+      height: 58px;
+      line-height: 40px;
+    }
+
+    .file_desc {
+      font-size: 12px;
+    }
+
+    /* 비밀번호 */
+    .password_bottom {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      color: #222222;
+      font-size: 14px;
+      position: relative;
+    }
+
+    .password_noti {
+      margin-top: 8px;
+      color: #222222;
+      font-size: 14px;
+      position: relative;
+    }
+
+    .pwd_length,
+    .pwd_discord {
+      color: var(--color-ottogi-red);
+    }
+
+    .pwd_success {
+      color: var(--color-ottogi-blue);
+    }
+
+    /* Main - 약관 */
+    .termbox {
+      width: 100%;
+      position: relative;
+      color: var(--color-content);
+    }
+
+    .term_toggleUpDown>form>p>label {
+      margin: 0;
+    }
+
+    .term_box .term_toggleUpDown form p {
+      width: 100%;
+      height: 58px;
+      padding: 18px;
+      box-sizing: border-box;
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      overflow: hidden;
+      border: 2px solid #e1e1e1;
+      border-radius: 15px;
+      font-weight: 500;
+    }
+
+    .term_content {
+      display: none;
+      width: 100%;
+      max-height: 240px;
+      padding: 27px;
+      box-sizing: border-box;
+      margin-bottom: 24px;
+      font-size: 14px;
+      background: white;
+      border-right: 2px solid var(--color-border);
+      border-left: 2px solid var(--color-border);
+      border-bottom: 2px solid var(--color-border);
+      border-radius: 15px;
+      overflow-y: auto;
+      background-color: #F8F8F8;
+      color: var(--color-content);
+      font-size: 12px;
+      font-weight: 300;
+      position: absolute;
+      z-index: 22222;
+    }
+
+    .term_content ol {
+      padding-bottom: 20px;
+    }
+
+    .term_content ul {
+      padding-bottom: 30px;
+    }
+
+    .termDetail_open,
+    .termDetail_close {
+      display: block;
+      width: 29px;
+      height: 29px;
+      cursor: pointer;
+      position: absolute;
+      right: 18px;
+    }
+
+    .termDetail_open {
+      display: none;
+    }
+
+    .term_content>h3 {
+      padding-bottom: 20px;
+      font-size: 13px;
+      line-height: 21px;
+    }
+
+    .term_content>h4 {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    .term_content p {
+      padding-bottom: 20px;
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 20px;
+    }
+
+    .termCon_00 {
+      padding-left: 20px;
+      box-sizing: border-box;
+    }
+
+    .termCon_00 li {
+      list-style: square
+    }
+
+    .termCon_01 li {
+      font-weight: 500 !important;
+      color: #DC2F34;
+      padding-bottom: 0 !important;
+    }
+
+    /* Top btn */
+    .fixed_area {
+      right: 10px;
+      width: 80px;
+      position: fixed;
+      bottom: 20px;
+      z-index: 200;
+    }
+
+    .btn_top.on {
+      display: block;
+    }
+
+    .btn_top {
+      width: 80px;
+      height: 72px;
+      background: url(/images/customer/btn_top_pc.svg) no-repeat 0 0 / 100%;
+      filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+    }
+
+    .sr_only {
+      position: absolute;
+      top: -99999px;
+      font-size: 0;
+      height: 0;
+    }
+
+    /* Footer */
+    .footer_top_container {
+      height: 70px;
+      border-top: 1px solid #c7c7c7;
+      border-bottom: 1px solid #c7c7c7;
+      display: flex;
+      background: #F7F7F7;
+    }
+
+    .footer_top {
+      width: 1200px;
+      margin: auto;
+    }
+
+    .footer_top ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer_top ul li a {
+      font-size: 15px;
+      font-weight: bold;
+      margin-right: 30px;
+      color: #3c3c3c;
+    }
+
+    .f_left {
+      float: left;
+      margin: 8px 0 0 0;
+    }
+
+    .f_right {
+      float: right;
+    }
+
+    .footer_bottom_container {
+      position: relative;
+      max-width: 1200px;
+      margin: auto;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .footer_bottom_container ul {
+      display: flex;
+    }
+
+    .footer_bottom_container ul li p {
+      margin-bottom: 6px;
+    }
+
+    .b_left {
+      margin: 15px 0 0 20px;
+    }
+
+    .b_right {
+      margin: 30px 0 90px 25px;
+    }
+
+    .b_last_img {
+      position: absolute;
+      top: 30px;
+      right: 0px;
+    }
+  </style>
+</head>
+
+<body style="min-width: 1600px;">
+  <div class="skipMenu" title="스킵 메뉴">
+    <a href="#guide">본문 내용 바로가기</a>
+  </div>
+  <div class="header_wrap">
+    <div class="ottugi_title">
+      <h1>오뚜기</h1>
+      <a href="../index.html">
+        <img src="../images/main/ottugi_logo.svg" alt="">
+      </a>
+    </div>
+    <div class="header_container">
+      <div class="header_all_wrap">
+        <nav class="header_nav">
+          <ul>
+            <li><a href="./about.html">회사소개</a>
+              <ul>
+                <li><a href="./about.html">회사개요*</a></li>
+                <li><a href="./business.html">사업소개*</a></li>
+                <li><a href="./ceo.html">CEO 메세지*</a></li>
+                <li><a href="./history.html">연혁*</a></li>
+                <li><a href="./maps.html">오시는길*</a></li>
+              </ul>
+            </li>
+            <li><a href="#">ESG경영</a>
+              <ul>
+                <li><a href="#none">Overview</a></li>
+                <li><a href="./ESG.html">ESG경영소개*</a></li>
+                <li><a href="#none">환경</a></li>
+                <li><a href="#none">사회</a></li>
+                <li><a href="#none">지배구조</a></li>
+                <li><a href="#none">사회공헌</a></li>
+                <li><a href="#none">동반성장</a></li>
+                <li><a href="#none">보고서및정책</a></li>
+                <li><a href="#none">ESG Data</a></li>
+              </ul>
+            </li>
+            <li><a href="./product.html">제품이야기</a>
+              <ul>
+                <li><a href="./product.html">제품정보*</a></li>
+                <li><a href="./product_new.html">신제품*</a></li>
+                <li><a href="./recipe.html">인기레시피*</a></li>
+              </ul>
+            </li>
+            <li><a href="#">브랜드경험</a>
+              <ul>
+                <li><a href="#none">Overview</a></li>
+                <li><a href="#none">공식캐릭터</a></li>
+                <li><a href="#none">브랜드공간</a></li>
+                <li><a href="#none">공장견학</a></li>
+                <li><a href="#none">공모전</a></li>
+                <li><a href="#none">페스티벌</a></li>
+                <li><a href="#none">이벤트</a></li>
+              </ul>
+            </li>
+            <li><a href="#none">홍보센터</a>
+              <ul>
+                <li><a href="./notice.html">공지사항*</a></li>
+                <li><a href="#none">오뚜기뉴스룸</a></li>
+                <li><a href="#none">언론보도</a></li>
+                <li><a href="#none">CF스토리</a></li>
+                <li><a href="#none">칼럼</a></li>
+                <li><a href="#none">투자정보</a></li>
+              </ul>
+            </li>
+            <li><a href="./customer.html">고객서비스</a>
+              <ul>
+                <li><a href="./customer.html">고객의 소리*</a></li>
+                <li><a href="#none">접수내역조회</a></li>
+                <li><a href="#none">고객상담 프로세스</a></li>
+                <li><a href="#none">고객만족활동</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- 랭귀지, 챗봇등 -->
+        <div class="lang_menu_btn">
+          <a href="#none">
+            <img src="../images/main/free-icon-menu-3502458.png" alt="">
+          </a>
+        </div>
+        <div class="lang">
+          <div class="lang_down">
+            <a href="#none">KR
+              <img src="../images/main/lang_down.svg" alt="">
+            </a>
+            <div class="lang_list">
+              <p><a href="#none">KR</a></p>
+              <p><a href="#none">EN</a></p>
+            </div>
+          </div>
+          <div class="ottugi_search">
+            <a href="#none"><img src="../images/main/ottugi_search.svg" alt=""></a>
+          </div>
+          <div class="ottugi_chat">
+            <a href="#none"><img src="../images/main/ottugi_chatbot.svg" alt=""></a>
+          </div>
+          <div class="ottugi_mall">
+            <a href="#none"><img src="../images/main/ottugi_mall.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+      <!-- 반응형 토글 버튼 -->
+      <div class="toggle_btn">
+        <a href="#none">
+          <img src="../images/main/littlemenu.svg" alt="">
+        </a>
+      </div>
+      <!-- 드롭다운메뉴 배경 -->
+      <div class="nav_bg"></div>
+    </div>
+  </div>
+
+  <main id="main" class="main">
+    <img src="/images/customer/img_mainImage.jpg" alt="중간 배너 이미지" class="banner">
+    <div class="guide_wrap" id="guide">
+      <section class="guide">
+        <div class="guide_left">
+          <img src="/images/customer/img_mainChart.png" alt="오뚜기 캐릭터">
+        </div>
+        <div class="guide_right">
+          <h2 class="guide_title">꼭 읽어주세요!</h2>
+          <ul>
+            <li>오뚜기는 고객님의 작은 소리도 귀 기울여 듣습니다. 불편하신 사항이나 문의사항, 제안 등을 남겨주세요.</li>
+            <li>고객의 소리를 통해 접수된 고객님의 의견은 관련 부서로 전달하여 제품 및 서비스 개선에 참고하겠습니다.</li>
+            <li>고객상담실에서는 본사 직원이
+              <span class="consumer_dispute">
+                <a href="https://www.kca.go.kr/odr/cm/in/rsltnCrtral.do">소비자 분쟁 해결 기준
+                  <img src="/images/customer/icon_arrow_dispute.svg" alt="소비자 분쟁 해결 기준 보러가기">
+                </a> </span>&nbsp;&nbsp;&nbsp에 따라 신속하고 공정하게 처리해드리고 있습니다.
+            </li>
+            <li>홍보/광고성 내용은 관리자에 의해 삭제될 수 있습니다.</li>
+            <li><span class="QnA">
+                <a href="https://ottogi.co.kr/service/otgfaq?pageIndex=1&cateFirst=1">
+                  자주묻는질문</a>
+              </span>
+              혹은 고객상담
+              <span class="chat_Bot"><img src="/images/customer/icon_chatbot.png" alt="챗봇 바로가기 아이콘"
+                  class="popChat01">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp챗봇</span>을 통해서도 궁금하신 내용을 해결하실 수 있습니다.
+            </li>
+            <li>산업안전보건법에 의거하여 폭언 및 욕설 시 상담이 제한될 수 있음을 안내 드립니다.</li>
+          </ul>
+          <div class="submit_method_wrap">
+            <h2 class="hide">접수 방법</h2>
+            <div class="submit_method">
+              <a href="#questions" class="btn_voc_web">홈페이지 접수</a>
+              <a href="#call_number" class="btn_voc_call">전화 상담</a>
+              <a href="#none" class="btn_voc_chatbot" onclick="popChatbot()">오뚜기 챗봇</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="container">
+      <div class="main_inner">
+        <div class="process_wrap">
+          <section class="process" style="width: 1200px;">
+            <h2>고객상담 처리절차</h2>
+            <ul>
+              <li class="process01">
+                <img src="/images/customer/icon_process01.png" alt="고객상담절차: 클레임 접수">
+                <dl>
+                  <dt>클레임접수</dt>
+                  <dd class="method">전화/홈페이지/챗봇</dd>
+                  <dd class="method02">
+                    전화/홈페이지/챗봇을<br>통해 접수됩니다
+                  </dd>
+                </dl>
+              </li>
+              <li class="process02">
+                <img src="/images/customer/icon_process02.png" alt="고객상담절차: 원인규명 및 해명">
+                <dl>
+                  <dt>원인규명 및 해명</dt>
+                  <dd class="method">전화/방문상담</dd>
+                  <dd class="method02">
+                    고객상담시스템을 통해<br>접수된 후 전문상담이<br>이루어집니다
+                  </dd>
+                </dl>
+              </li>
+              <li class="process03">
+                <img src="/images/customer/icon_process03.png" alt="고객상담절차: 고객문의해결">
+                <dl>
+                  <dt>고객문의해결</dt>
+                  <dd class="method">피드백</dd>
+                  <dd class="method02">
+                    관련부서에 전달하여<br>확인/조치 후 피드백과<br>
+                    함께 문의가 해결됩니다.
+                  </dd>
+                </dl>
+              </li>
+              <li class="process04">
+                <img src="/images/customer/icon_process04.png" alt="고객상담절차: 제품/업무 개선">
+                <dl>
+                  <dt>제품/업무개선</dt>
+                  <dd class="method">교육 및 개선</dd>
+                  <dd class="method02">
+                    교육 후 제품 및 서비스<br>개선이 이루어집니다.
+                  </dd>
+                </dl>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <section class="call_info" id="call_number">
+          <h2>고객상담센터</h2>
+          <div class="call_info_box">
+            <p>
+              <img src="/images/customer/icon_callcenter.png" alt="고객상담실 아이콘">
+              <span class="call_num01">오뚜기 고객상담실</span>
+              <span class="call_num">080-433-8888</span>
+            </p>
+            <p>
+              <img src="/images/customer/icon_callcenter.png" alt="고객상담실 아이콘">
+              <span class="call_num01">오뚜기라면 고객상담실</span>
+              <span class="call_num">080-088-1212</span>
+            </p>
+            <p class="center_time">
+              (전화상담 가능시간: 평일 월~금 오전 8시 30분 ~ 오후 5시)
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <section class="questions" id="questions">
+        <div>
+          <h2>홈페이지 접수</h2>
+          <div class="questions_inner">
+            <!-- 첫 번째 문항 -->
+            <form>
+              <div class="question type">
+                <label for="question_type" class="question_type">상담 유형
+                  <span class="submit_required">(필수)</span>
+                </label>
+                <div class="choice">
+                  <span class="form_wrap">
+                    <label for="customerTopicsCodePRAISE" type="radio">칭찬</label>
+                    <input type="radio" id="customerTopicsCodePRAISE" name="customerTopicsCode" value="PRAISE" checked>
+                  </span>
+                  <span class="form_wrap">
+                    <label for="customerTopicsCodeSUGGESTION" type="radio">제안</label>
+                    <input type="radio" id="customerTopicsCodeSUGGESTION" name="customerTopicsCode" value="SUGGESTION">
+                  </span>
+                  <span class="form_wrap">
+                    <label for="customerTopicsCodeINQUIRY" type="radio">문의</label>
+                    <input type="radio" id="customerTopicsCodeINQUIRY" name="customerTopicsCode" value="INQUIRY">
+                  </span>
+                  <span class="form_wrap">
+                    <label for="customerTopicsCodeCOMPLAINT" type="radio">불편/불만</label>
+                    <input type="radio" id="customerTopicsCodeCOMPLAINT" name="customerTopicsCode" value="COMPLAINT">
+                  </span>
+                </div>
+              </div>
+
+              <!-- 두 번째 문항 -->
+              <div class="question">
+                <label for="name">성명<span class="submit_required">(필수)</span></label>
+                <input type="text" id="name" name="name" minlength="2" maxlength="16" placeholder="이름을 입력해 주세요. ">
+              </div>
+
+              <!-- 세 번째 문항 -->
+              <div class="question">
+                <label for="phoneNumber">연락처<span class="submit_required">(필수)</span></label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="연락처를 입력해 주세요.">
+              </div>
+
+              <!-- 네 번째 문항 -->
+              <div class="question">
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" required placeholder="이메일을 입력해 주세요.">
+                <span class="noEmailYn">
+                  <label for="noEmailYn" type="checkbox">이메일 주소 없음</label>
+                  <input type="checkbox" id="noEmailYn" name="noEmailYn" value="Y">
+                </span>
+              </div>
+
+              <!-- 다섯 번째 문항 -->
+              <div class="question">
+                <label for="isLivingAbroad">거주국가<span class="submit_required">(필수)</span></label>
+                <div class="isLivingAbroad">
+                  <div class="country_choice">
+                    <span>
+                      <label for="isLivingAbroadYnN" type="radio">국내</label>
+                      <input type="radio" id="isLivingAbroadYnN" name="isLivingAbroad" checked>
+                    </span>
+                    <span>
+                      <label for="isLivingAbroadYnY" type="radio">해외</label>
+                      <input type="radio" id="isLivingAbroadYnY" name="isLivingAbroad">
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 여섯 번째 문항 -->
+              <div class="question">
+                <label for="zipCode">주소</label>
+                <div class="post">
+                  <button type="button" id="zipCodeSearch">
+                    우편번호 검색
+                  </button>
+                  <label for="address" type="text"></label>
+                  <input type="text" id="address" name="address" placeholder="주소를 검색하세요.">
+                  <label for="detailAddress" type="text"></label>
+                  <input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소를 적어주세요.">
+                </div>
+              </div>
+
+              <!-- 일곱 번째 문항 -->
+              <div class="question">
+                <label for="productName">제품명</label>
+                <input type="text" id="productName" name="productName" placeholder="제품명을 입력해 주세요.">
+              </div>
+
+              <!-- 문항과 답 세트 -->
+              <div class="question">
+                <label for="description">내용<span class="submit_required">(필수)</span></label>
+                <textarea name="textarea" id="description" rows="10" cols="50"
+                  placeholder="내용을 입력해 주세요. (이름, 연락처, 주소, 이메일, 주민등록번호 등 개인정보는 입력하지 않도록 주의해 주시기 바랍니다.) 제품 관련 문의 시 제품의 유통기한 및 중량도 확인하시어 기재 부탁 드립니다."></textarea>
+              </div>
+
+              <!-- 파일 첨부 -->
+              <div class="question file">
+                <label for="question">파일첨부</label>
+                <span class="input-file">
+                  <a href="#none">
+                    <label class="hide" for="file">파일선택</label>
+                    <input type="file" name="file" class="hide-txt" id="file">
+                  </a>
+                  <span class="file_desc">
+                    최대 1개, 20MB 이하<br><span>※ 아래의 파일 양식만 등록
+                      가능합니다.<br>(png,jpg,jpeg,gif,zip,pdf,xlx,xlsx,doc,docx,ppt,pptx,hwp,hwpx)</span>
+                  </span>
+                </span>
+              </div>
+
+              <!-- 여덟 번째 문항 -->
+              <div class="question">
+                <label for="password">비밀번호<span class="submit_required">(필수)</span></label>
+                <input type="password" id="password" name="password" minlength="4" maxlength="16"
+                  placeholder="비밀번호 4~16자리를 입력해 주세요.">
+                <div class="password_bottom">
+                  <img src="/images/customer/icon_password.svg" alt="주의사항 아이콘">
+                  <span>비밀번호는 추후 접수내역 조회 시에 활용되오니, 꼭 기억해
+                    주세요.</span>
+                </div>
+              </div>
+
+              <!-- 아홉 번째 문항 -->
+              <div class="question">
+                <label for="password_confirm">비밀번호 확인<span class="submit_required">(필수)</span></label>
+                <input type="password" id="password_confirm" name="password_confirm" minlength="4" maxlength="16"
+                  placeholder="비밀번호 4~16자리를 입력해 주세요.">
+                <div class="password_noti hide">
+                  <div class="pwd_length hide">4~16자리를 입력해 주세요.</div>
+                  <div class="pwd_discord hide">
+                    비밀번호가 일치하지 않습니다
+                  </div>
+                  <div class="pwd_success hide">
+                    사용 가능한 비밀번호 입니다
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <!-- 약관 -->
+            <div class="term_box question">
+              <div class="term_toggleUpDown">
+                <form>
+                  <p>
+                    <input type="checkbox" id="agreeCheckbox" required>
+                    <label for="agreeCheckbox">개인정보 수집·이용 동의<span class="submit_required">(필수)</span></label>
+                    <img class="termDetail_open" src="/images/customer/btn_detail_view.svg" alt="약관 상세 보기">
+                    <img class="termDetail_close" src="/images/customer/btn_detail_toggleUp.svg" alt="약관 상세 보기">
+                  </p>
+                </form>
+              </div>
+              <div class="term_content">
+                <h3>개인정보 수집·이용 동의</h3>
+                <p>주식회사 오뚜기(이하 "회사"라 합니다)는 개인정보보호법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 (이하"정통망법"이라 합니다) 등 관련 법령상의 개인정보보호규정을
+                  준수하며,
+                  관련 법령에 의거한 개인정보처리방침을 정하여 고객의 권익보호에 최선을 다하고 있습니다.</p>
+                <ol>
+                  <li>1. 개인정보의 수집 및 이용 목적</li>
+                  <li>2. 개인정보의 수집항목 및 수집방법</li>
+                  <li>3. 개인정보의 보유, 이용기간 및 파기</li>
+                </ol>
+
+                <h4>1. 개인정보의 수집 및 이용 목적</h4>
+                <p>회사는 수집한 개인정보를 공장견학 또는 고객한마디 상담시 본인 확인 및 고객서비스 유형에 따른 신속한 응대 목적으로만 이용하며, 이용 목적이 변경되는 경우 관련 법규에 따라 별도의
+                  동의를 받는 등 필요한 조치를 이행합니다.</p>
+
+                <h4>2. 개인정보의 수집항목 및 수집방법</h4>
+                <p>(1) 회원가입 시 개인정보 수집<br>회사 홈페이지(www.ottogi.co.kr)는 별도의 개인정보 등록절차 없이 자유롭게 접근할 수 있습니다. 다만, 다음의 서비스는 보다
+                  향상된
+                  양질의 서비스를 제공하기 위하여 최소한의 개인정보를 처리하고 있습니다.</p>
+                <ul class="termCon_00">
+                  <li>필수수집항목<br>항목 성명, 이메일, 연락처 </li>
+                  <li>선택수집항목<br>주소</li>
+                  <li>필수/선택항목 수집 목적<br>본인확인, 공장견학 및 고객한마디 유형에 따른 응대</li>
+                  <li>자동수집 항목 <br>사이트 이용기록(접속 로그) 접속 IP 정보</li>
+                  <li>자동수집 항목 수집 목적<br>자동수집</li>
+                  <li>온라인 이벤트 진행시 이벤트 유형에 따라 수집되는 성명, 연락처, 주소 등에 대한 개인정보 의 수집항목, 수집목적, 보유기간을 별도 고지하여 동의를 받습니다.</li>
+                  <li>회사는 고객의 성명, 이메일, 연락처, 주소 정보 입력시 개인정보 수집 및 이용에 관한 동의여부를 선택할 수 있는 장치를 마련하여 「동의함」버튼을 클릭하는 경우, 개인정보 수집
+                    및
+                    이용에 대하여 동의한 것으로 봅니다.</li>
+                </ul>
+
+                <h4>3. 개인정보의 보유, 이용기간 및 파기</h4>
+                <p>(1) 회사가 고객의 개인정보의 수집목적 또는 제공받은 목적이 달성된 때에는 고객의 개인정보를 지체없이 파기합니다. 다만 상법, 전자상거래등에서의 소비자보호에 관한 법률등 법령의
+                  규정에
+                  의하여 보존할 필요성이 있는 경우에는 아래와 같이 고객의 개인정보를 보관할 수 있습니다.이 경우 해당 개인정보는 보관의 목적으로만 관리합니다.</p>
+                <ul class="termCon_01">
+                  <li><strong>계약 또는 청약철회 등에 관한 기록 : 5년</strong></li>
+                  <li><strong>대금결제 및 재화 등의 공급에 관한 기록 : 5년</strong></li>
+                  <li><strong>소비자의 불만 또는 분쟁처리에 관한 기록 : 3년</strong></li>
+                </ul>
+                <p>(2) 회사는 회원의 개인정보 유출로 인한 피해가 발생하지 않도록 다음 방법을 통하여 개인정보를 파기합니다. 종이에 출력된 개인정보 : 분쇄기로 분쇄하거나 소각 전자적 파일 형태로
+                  저장된 개인정보 : 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제</p>
+
+                <h4>4. 고지의무</h4>
+                <p>법령, 정책 또는 보안기술의 변경에 따라 내용의 추가, 삭제 및 수정이 있을 시에는 최소 7일 전부터 홈페이지를 통하여 공지됩니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" id="btn_submit" onclick="checkValidity()">
+          등록
+        </button>
+      </section>
+    </div>
+    <div class="fixed_area">
+      <a href="#" class="btn_top on">
+        <span class="sr_only">상단으로 이동하기</span>
+      </a>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer_wrap">
+      <div class="footer_top_container">
+        <div class="footer_top">
+          <span class="f_left">
+            <ul>
+              <li><a href="#none"><strong>개인정보처리방침</strong></a></li>
+              <li><a href="#none">고객상담</a></li>
+              <li><a href="#none">찾아오시는 길</a></li>
+              <li><a href="#none">오뚜기몰</a></li>
+              <li><a href="#none">고객상담 챗봇</a></li>
+            </ul>
+          </span>
+          <span class="f_right">
+            <ul>
+              <li><a href="#none">
+                  <img src="../images/main/footer1.png" alt="">
+                </a></li>
+              <li><a href="#none">
+                  <img src="../images/main/footer2.png" alt="">
+                </a></li>
+              <li><a href="#none">
+                  <img src="../images/main/footer3.png" alt="">
+                </a></li>
+              <li><a href="#none">
+                  <img src="../images/main/footer4.png" alt="">
+                </a></li>
+            </ul>
+          </span>
+        </div>
+      </div>
+
+      <div class="footer_bottom_wrap">
+        <div class="footer_bottom_container">
+          <ul>
+            <li class="b_left"><img src="../images/main/f_logo.jpg" alt=""></li>
+            <li class="b_right">
+              <p>(주)오뚜기 | 사업자등록번호 : 138-81-03238 | 대표이사 황성만 |</p>
+              <p>주소 (14060) 경기도 안양시 동안구 흥안대로 405 (평촌동 160)오뚜기 고객상담실 : 080-024-2311</p>
+              <p>오뚜기라면 고객상담실 : 080-088-1212 (월~금 08:30~17:00)</p>
+              <br>
+              <p>Copyright ⓒ OTTOGI CORPORATION.,Ltd All Rights Reserved.</p>
+            </li>
+          </ul>
+          <div class="b_last_img">
+            <img src="../images/main/footer_b_img1.gif" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script>
+    // Header - Hover GNB DropDown 메뉴
+    $(document).ready(function () {
+      $(".header_nav li").hover(function () {
+        $(".header_nav ul ul, .nav_bg").stop().slideDown("fast");
+      }, function () {
+        $(".header_nav ul ul, .nav_bg").stop().slideUp("fast");
+      });
+
+      // Header - Language, Chatbot 등등
+      isShow = true;
+      $('.lang_menu_btn').on('click', function () {
+        if (isShow) {
+          isShow = false;
+          $('.lang').hide();
+        } else {
+          isShow = true;
+          $('.lang').show();
+        }
+      })
+
+      // Header - Language
+      isShow = true;
+      $('.lang_down').on('click', function () {
+        if (isShow) {
+          isShow = false;
+          $('.lang_list').hide();
+        } else {
+          isShow = true;
+          $('.lang_list').show();
+        }
+      })
+    });
+
+    // Main - 약관 자세히 보기
+    $(document).ready(function () {
+      $(".termDetail_close ").click(function () {
+        $(".term_content").stop().show();
+        $(".termDetail_close").hide();
+        $(".termDetail_open ").show();
+      });
+      $(".termDetail_open").click(function () {
+        $(".term_content").stop().hide();
+        $(".termDetail_open").hide();
+        $(".termDetail_close").show();
+      });
+    });
+  </script>
+  <script>
+    // Main - chatbot 팝업
+    const btn_popChatbot = document.querySelector(".btn_voc_chatbot");
+    const btn_popChatbot02 = document.querySelector('.popChat01')
+    btn_popChatbot02.addEventListener("click", function popChatbot() {
+      window.open(
+        "customer_chatbot.html",
+        "",
+        "width=425, height=720, left=0, top=0, resizable=no"
+      );
+    });
+    btn_popChatbot.addEventListener("click", function popChatbot() {
+      window.open(
+        "customer_chatbot.html",
+        "",
+        "width=425, height=720, left=0, top=0, resizable=no"
+      );
+    });
+
+    // Main - 우편 번호 검색
+    const btnZipCode = document.getElementById('zipCodeSearch');
+    btnZipCode.addEventListener('click', () => {
+      new daum.Postcode({
+        oncomplete: function (data) {
+        }
+      }).open();
+    })
+
+    // Main - 고객의 소리 유효성 검사
+    const button = document.getElementById("btn_submit");
+
+    // 이름
+    const name = document.getElementById("name");
+
+    // 연락처
+    const phone = document.getElementById("phoneNumber");
+
+    // 내용
+    const description = document.getElementById("description");
+
+    // 비밀번호
+    const pwd = document.getElementById("password");
+    const pwdCon = document.getElementById("password_confirm");
+    const pwdNoti = document.querySelector(".password_noti");
+    const pwdLengthElement = document.querySelector(".pwd_length");
+    const pwdSuccess = document.querySelector(".pwd_success");
+    const pwdFail = document.querySelector(".pwd_discord");
+
+    function pwdValidity() {
+      const pwdLength = pwd.value.length;
+
+      if (pwdLength === 0 || pwdLength < 4 || pwdLength > 16) {
+        pwdNoti.classList.remove("hide");
+        pwdLengthElement.classList.remove("hide");
+        pwdSuccess.classList.add("hide");
+        pwdFail.classList.add("hide");
+        return false;
+      }
+      if (!(pwd.value === pwdCon.value)) {
+        pwdNoti.classList.remove("hide");
+        pwdLengthElement.classList.add("hide");
+        pwdSuccess.classList.add("hide");
+        pwdFail.classList.remove("hide");
+        return false;
+      } else {
+        pwdNoti.classList.remove("hide");
+        pwdLengthElement.classList.add("hide");
+        pwdFail.classList.add("hide");
+        pwdSuccess.classList.remove("hide");
+      }
+      return true;
+    }
+
+    pwd.addEventListener("keyup", pwdValidity);
+    pwdCon.addEventListener("keyup", pwdValidity);
+
+    // 약관
+    const agreeCheckbox = document.getElementById("agreeCheckbox");
+
+    button.addEventListener("click", function checkValidity() {
+      if (name.value === "") {
+        alert("이름을 입력해 주세요");
+        return false;
+      }
+      if (phone.value === "" || isNaN(Number(phone.value))) {
+        alert("올바른 휴대폰 번호를 입력해 주세요");
+        return false;
+      }
+      if (description.value == "") {
+        alert("내용을 입력해 주세요");
+        return false;
+      }
+      if (description.value == "") {
+        alert("내용을 입력해 주세요");
+        return false;
+      }
+      if (!pwdValidity()) {
+        alert("비밀번호를 확인해 주세요");
+        return false;
+      }
+      if (!agreeCheckbox.checked) {
+        alert("약관에 동의해 주세요");
+        return false;
+      }
+      alert(
+        "소중한 의견 전달 감사합니다. 확인/조치 후 피드백과 함께 문의가 해결됩니다."
+      );
+    });
+
+    // Top btn
+    var btnTop = document.querySelector('.btn_top');
+
+    window.addEventListener("scroll", function () {
+      var scrollY = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollY > 180) {
+        btnTop.classList.add("on");
+      } else {
+        btnTop.classList.remove("on");
+      }
+    });
+  </script>
+</body>
+
+</html>

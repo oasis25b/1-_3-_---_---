@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회사 개요</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Script -->
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="/js/fadein.js"></script>
+    <!-- Favicon -->
+    <link rel="icon" href="/images/common/favicon.ico">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body style="min-width: 1600px;">
+    <div class="header_wrap">
+        <div class="ottugi_title">
+            <h1>오뚜기</h1>
+            <a href="../index.html">
+                <img src="../images/main/ottugi_logo.svg" alt="">
+            </a>
+        </div>
+        <div class="header_container">
+            <div class="header_all_wrap">
+                <nav class="header_nav">
+                    <ul>
+                        <li><a href="./about.html">회사소개</a>
+                            <ul>
+                                <li><a href="./about.html">회사개요*</a></li>
+                                <li><a href="./business.html">사업소개*</a></li>
+                                <li><a href="./ceo.html">CEO 메세지*</a></li>
+                                <li><a href="./history.html">연혁*</a></li>
+                                <li><a href="./maps.html">오시는길*</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">ESG경영</a>
+                            <ul>
+                                <li><a href="#none">Overview</a></li>
+                                <li><a href="./ESG.html">ESG경영소개*</a></li>
+                                <li><a href="#none">환경</a></li>
+                                <li><a href="#none">사회</a></li>
+                                <li><a href="#none">지배구조</a></li>
+                                <li><a href="#none">사회공헌</a></li>
+                                <li><a href="#none">동반성장</a></li>
+                                <li><a href="#none">보고서및정책</a></li>
+                                <li><a href="#none">ESG Data</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./product.html">제품이야기</a>
+                            <ul>
+                                <li><a href="./product.html">제품정보*</a></li>
+                                <li><a href="./product_new.html">신제품*</a></li>
+                                <li><a href="./recipe.html">인기레시피*</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">브랜드경험</a>
+                            <ul>
+                                <li><a href="#none">Overview</a></li>
+                                <li><a href="#none">공식캐릭터</a></li>
+                                <li><a href="#none">브랜드공간</a></li>
+                                <li><a href="#none">공장견학</a></li>
+                                <li><a href="#none">공모전</a></li>
+                                <li><a href="#none">페스티벌</a></li>
+                                <li><a href="#none">이벤트</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#none">홍보센터</a>
+                            <ul>
+                                <li><a href="./notice.html">공지사항*</a></li>
+                                <li><a href="#none">오뚜기뉴스룸</a></li>
+                                <li><a href="#none">언론보도</a></li>
+                                <li><a href="#none">CF스토리</a></li>
+                                <li><a href="#none">칼럼</a></li>
+                                <li><a href="#none">투자정보</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./customer.html">고객서비스</a>
+                            <ul>
+                                <li><a href="./customer.html">고객의 소리*</a></li>
+                                <li><a href="#none">접수내역조회</a></li>
+                                <li><a href="#none">고객상담 프로세스</a></li>
+                                <li><a href="#none">고객만족활동</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- 랭귀지, 챗봇등 -->
+                <div class="lang_menu_btn">
+                    <a href="#none">
+                        <img src="../images/main/free-icon-menu-3502458.png" alt="">
+                    </a>
+                </div>
+                <div class="lang">
+                    <div class="lang_down">
+                        <a href="#none">KR
+                            <img src="../images/main/lang_down.svg" alt="">
+                        </a>
+                        <div class="lang_list">
+                            <p><a href="#none">KR</a></p>
+                            <p><a href="#none">EN</a></p>
+                        </div>
+                    </div>
+                    <div class="ottugi_search">
+                        <a href="#none"><img src="../images/main/ottugi_search.svg" alt=""></a>
+                    </div>
+                    <div class="ottugi_chat">
+                        <a href="#none"><img src="../images/main/ottugi_chatbot.svg" alt=""></a>
+                    </div>
+                    <div class="ottugi_mall">
+                        <a href="#none"><img src="../images/main/ottugi_mall.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <!-- 반응형 토글 버튼 -->
+            <div class="toggle_btn">
+                <a href="#none">
+                    <img src="../images/main/littlemenu.svg" alt="">
+                </a>
+            </div>
+            <!-- 드롭다운메뉴 배경 -->
+            <div class="nav_bg"></div>
+        </div>
+    </div>
+
+    <section class="main">
+        <h2>회사 소개</h2>
+        <p>(주)오뚜기 임직원은 식품을 통해 인류의 건강과 행복을 추구하고 있습니다.</p>
+    </section>
+
+    <div class="section no-pad-bot dep3">
+        <div class="container2">
+            <div class="cnb3 fix">
+                <ul>
+                    <li><a href="about.html" class="on" title="선택됨">회사 개요</a></li>
+                    <li><a href="business.html" class="on">사업 소개</a></li>
+                    <li><a href="ceo.html" class="on">CEO 메세지</a></li>
+                    <li><a href="history.html" class="on">회사 연혁</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--//main-->
+
+    <div class="container">
+        <div class="path">
+            <div class="text-right right2">
+                <a href="#none" class="breadcruma">홈</a>
+                <a href="#none" class="breadcrumb">회사소개</a>
+                <a href="#none" class="breadcrumb">(주)오뚜기</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="all_wrap" style="opacity: 0;">
+        <div class="container">
+            <div class="cont-wrap">
+                <ul class="introUI">
+                    <li class="introtop">
+                        <div class="about-txt">
+                            <h3 style="font-weight: bold;">(주) 오뚜기는 인류의 식생활 향상과<br> 건강에 이바지하는 기업입니다.</h3>
+                        </div>
+                        <div class="about-img">
+                            <img src="/images/company/img_company1.jpg" alt=""
+                                style="width: 1000px; border-radius: 20px;">
+                        </div>
+                        <div class="about-txt">
+                            <p style="font-size: 18px;line-height: 32px;text-align: center;width: 1100px;">
+                                오뚜기 전 임직원들은 <strong class="red" style="font-size: 19px;">'보다 좋은 품질, 보다 높은 영양, 보다 앞선
+                                    식품'</strong>으로<br> 인류 식생활 향상에 이바지하기 위해 맡은 바 업무에 최선을 다하고 있습니다. <br>
+                                영업, 생산, 연구, 관리 등 모든 부서에서 스스로에게 주어진 업무를 빈틈없이 처리하고 있는 것은 물론,<br> 밝고 명랑한 직장 분위기를 만들기 위해
+                                노력하고
+                                있습니다.
+                                <br><br>
+                                이러한 오뚜기의 노력들이 바로 최고 품질, 최고의 맛으로 승화되는 것입니다.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="about-txt">
+                            <p
+                                style="font-size: 33px;line-height: 45px;top: 100px;color: #222;font-weight: bold;text-align: center;position: relative;align-items: center;">
+                                오뚜기는<br>
+                                식품안전문화 정착을 위해<br>
+                                노력하는 기업입니다.</p>
+                        </div>
+                        <div class="about-img">
+                            <img src="/images/company/img_company2.jpg" alt=""
+                                style="border-radius: 20px;position: relative;right: 50px">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="about-txt">
+                            <p
+                                style="font-size: 33px;line-height: 45px;top: 200px;color: #222;font-weight: bold;text-align: center;position: relative;align-items: center;">
+                                오뚜기는 소비자가 필요로 하고<br>
+                                소비자에게 편리한 제품을<br>
+                                만드는 기업입니다.</p>
+                        </div>
+                        <div class="about-img">
+                            <img src="/images/company/img_company3.jpg" alt=""
+                                style="border-radius: 20px;position: relative;left: 50px;">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 기업 이념 page -->
+        <div class="container ph2">
+            <img src="/images/company/img_company4.jpg" alt="">
+            <div class="page-box">
+                <p style="font-weight: bold;">
+                    오뚜기는 인류에게 필요한 기업이 되고자 합니다.
+                </p>
+            </div>
+        </div>
+
+        <div class="philosophy">
+            <div class="inside">
+                <h3>오뚜기 기업이념</h3>
+                <div class="item first">
+                    <h4 class="tit">#사시</h4>
+                    <div class="con">
+                        <p class="txt">
+                            보다 좋은 <em>품질</em><br>
+                            보다 높은 <em>영양</em><br>
+                            보다 앞선 <em>식품</em>으로<br>
+                            인류식생활 향상에 이바지 한다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h4 class="tit">#사훈</h4>
+                    <div class="con">
+                        <ul>
+                            <li class="icon1">
+                                <span>인화단결</span>
+                            </li>
+                            <li class="icon2">
+                                <span>연구개척</span>
+                            </li>
+                            <li class="icon3">
+                                <span>신속정확</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h4 class="tit">#생활신조</h4>
+                    <div class="con">
+                        <img src="/images/company/about1213.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed_area">
+        <a href="#" class="btn_top on">
+            <span class="sr_only">상단으로 이동하기</span>
+        </a>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer_wrap">
+            <div class="footer_top_container">
+                <div class="footer_top">
+                    <span class="f_left">
+                        <ul>
+                            <li><a href="#none"><strong>개인정보처리방침</strong></a></li>
+                            <li><a href="#none">고객상담</a></li>
+                            <li><a href="#none">찾아오시는 길</a></li>
+                            <li><a href="#none">오뚜기몰</a></li>
+                            <li><a href="#none">고객상담 챗봇</a></li>
+                        </ul>
+                    </span>
+                    <span class="f_right">
+                        <ul>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer1.png" alt="">
+                                </a></li>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer2.png" alt="">
+                                </a></li>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer3.png" alt="">
+                                </a></li>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer4.png" alt="">
+                                </a></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+
+            <div class="footer_bottom_wrap">
+                <div class="footer_bottom_container">
+                    <ul>
+                        <li class="b_left"><img src="../images/main/f_logo.jpg" alt=""></li>
+                        <li class="b_right">
+                            <p>(주)오뚜기 | 사업자등록번호 : 138-81-03238 | 대표이사 황성만 |</p>
+                            <p>주소 (14060) 경기도 안양시 동안구 흥안대로 405 (평촌동 160)오뚜기 고객상담실 : 080-024-2311</p>
+                            <p>오뚜기라면 고객상담실 : 080-088-1212 (월~금 08:30~17:00)</p>
+                            <br>
+                            <p>Copyright ⓒ OTTOGI CORPORATION.,Ltd All Rights Reserved.</p>
+                        </li>
+                    </ul>
+                    <div class="b_last_img">
+                        <img src="../images/main/footer_b_img1.gif" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <div class="btnTop">
+        <a href="about.html" class="btn_btmTop">TOP</a>
+    </div> -->
+</body>
+<script>
+    // button Top
+    var btnTop = document.querySelector('.btn_top');
+
+    window.addEventListener("scroll", function () {
+        var scrollY = window.scrollY || document.documentElement.scrollTop;
+
+        if (scrollY > 180) {
+            btnTop.classList.add("on");
+        } else {
+            btnTop.classList.remove("on");
+        }
+    });
+</script>
+
+</html>

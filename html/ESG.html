@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESG 경영</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../images/common/favicon.ico">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <!-- Script -->
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <script src="/js/main.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Lato:wght@300;400;700;900&family=Noto+Sans+KR&family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@300&display=swap');
+
+        /* Reset */
+        body,
+        header,
+        main,
+        footer,
+        section,
+        nav,
+        div,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p,
+        ol,
+        ul,
+        li,
+        dl,
+        dt,
+        dd,
+        form,
+        fieldset,
+        legend,
+        input,
+        button {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        address {
+            font-style: normal;
+        }
+
+        fieldset,
+        img {
+            border: none;
+        }
+
+        img {
+            vertical-align: bottom;
+            border: none;
+        }
+
+        input,
+        button {
+            vertical-align: center;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .hide {
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden;
+            margin: -1px;
+            border: 0 none !important;
+            text-indent: -9999px;
+            position: absolute;
+        }
+
+        /* Color */
+        :root {
+            --color-ottogi-yellow: var(--color-yellow);
+            --color-ottogi-red: var(--color-red);
+            --color-ottogi-blue: var(--color-blue);
+            --color-title: var(--color-title);
+            --color-content: var(--color-content);
+            --color-border: var(--color-border);
+            /* Colors */
+            --color-yellow: rgb(255, 243, 0);
+            --color-red: rgb(211, 35, 58);
+            --color-blue: rgb(10, 48, 158);
+            --color-title: #333333;
+            --color-content: #222222;
+            --color-border: #e5e5e5;
+        }
+
+        /* Layout */
+        html,
+        body {
+            scroll-behavior: smooth;
+            font-family: 'Nanum Gothic', sans-serif;
+            /* font-family: 'Noto Sans KR', sans-serif; */
+        }
+
+        .header_wrap {
+            width: 100%;
+            height: 180px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: url(/images/main/wave-haikei.svg) no-repeat;
+            background-size: 100%;
+        }
+
+        .header_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            padding-right: 60px;
+        }
+
+        .main {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main_inner {
+            min-width: 1280px;
+            padding: 0 180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header_all_wrap {
+            position: relative;
+        }
+
+        .header_nav>ul>li>a {
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all ease-in 0.3s;
+        }
+
+        .header_nav>ul>li>a:hover {
+            color: #DF2D32;
+        }
+
+        .header_nav>ul>li>ul>li>a {
+            text-decoration: none;
+            color: rgb(82, 82, 82);
+            font-size: 15px;
+        }
+
+        .header_nav>ul>li>ul>li>a:hover {
+            color: #DC2F34;
+            font-weight: bold;
+            border-bottom: 2px solid #DC2F34;
+        }
+
+        .ottugi_title {
+            margin-left: 60px;
+        }
+
+        .ottugi_title h1 {
+            text-indent: -9999px;
+        }
+
+        .ottugi_title img {
+            width: 70px;
+        }
+
+        .header_nav ul ul {
+            position: absolute;
+            top: 110px;
+            height: 460px;
+            display: none;
+            /* background: linear-gradient(0deg, rgba(150, 152, 124, 1) 0%, rgba(255, 242, 0, 1) 46%, rgba(254, 241, 0, 1) 99%); */
+            z-index: 4100;
+        }
+
+        .header_nav>ul {
+            height: 80px;
+            display: flex;
+            margin: 50px 0 0 0;
+            justify-content: space-between;
+            align-items: center;
+            /* background: blue; */
+        }
+
+        .header_nav>ul>li {
+            font-size: 20px;
+            /* height: 60px; */
+            line-height: 40px;
+            padding-right: 60px;
+            /* background: green; */
+        }
+
+        .lang_menu_btn {
+            position: absolute;
+            top: 75px;
+            right: -50px;
+        }
+
+        .lang_menu_btn img {
+            width: 30px;
+        }
+
+        /* Toggle */
+        .toggle_btn {
+            display: none;
+        }
+
+        .lang {
+            position: absolute;
+            background: #fff;
+            text-align: center;
+            padding: 5px;
+            top: 110px;
+            right: -100px;
+            display: none;
+            border: 1px solid #b8b8b8;
+            border-radius: 10px;
+            z-index: 9999;
+        }
+
+        .lang_down a {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .lang_list {
+            position: absolute;
+            background: #dbdbdb;
+            top: 0px;
+            right: -55px;
+            height: 90px;
+            padding: 10px;
+            display: none;
+            border: 1px solid #b8b8b8;
+            border-radius: 10px;
+            z-index: 4000;
+        }
+
+        .lang_list p {
+            margin-bottom: 5px;
+        }
+
+        .lang_list p:hover {
+            font-weight: bold;
+        }
+
+        .lang_down,
+        .ottugi_search,
+        .ottugi_chat,
+        .ottugi_mall {
+            padding: 8px;
+        }
+
+        .ottugi_mall {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .ottugi_mall img {
+            width: 95px;
+        }
+
+        .nav_bg {
+            position: absolute;
+            top: 170px;
+            left: 0;
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(0deg, rgba(150, 152, 124, 1) 0%, rgba(255, 242, 0, 1) 46%, rgba(254, 241, 0, 1) 99%);
+            display: none;
+            z-index: 4000;
+        }
+
+        /* Main - Common */
+        .tit_depth4 {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 40px;
+            font-weight: 500;
+            letter-spacing: -.8px;
+            text-align: center;
+        }
+
+        .esg_organization,
+        .esg_rework,
+        .esg_rating {
+            padding-top: 150px;
+            height: inherit;
+        }
+
+        .esg_rating {
+            margin-bottom: 150px;
+        }
+
+        .esg_organization .inner,
+        .esg_rework .inner,
+        .esg_rating .inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 75px;
+            box-sizing: content-box;
+        }
+
+        .desc {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 34px;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Main - 배너 */
+        .esg_intro_visual {
+            background: url(/images/esg/img_overview.jpg) no-repeat 100% / cover;
+            background-size: 100%;
+            font-family: 'DM Sans', sans-serif;
+            font-family: 'Nanum Gothic', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .visual_con_wrap {
+            max-width: 1200px;
+            min-height: 650px;
+            height: inherit;
+            padding: 80px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .top_wrap>h2 {
+            text-align: center;
+            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.60);
+            color: #ffffff;
+            font-size: 48px;
+            letter-spacing: 1.5px
+        }
+
+        .top_wrap>p {
+            text-align: center;
+            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.60);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            padding-top: 0;
+        }
+
+        .txt_wrap {
+            position: absolute;
+            right: 8px;
+            bottom: 88px;
+            text-align: right;
+        }
+
+        .col_yellow {
+            font-size: 48px;
+            font-weight: 500;
+            white-space: nowrap;
+            color: #FFED00;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+            letter-spacing: -1.44px;
+            line-height: 56px;
+            margin-bottom: 24px;
+        }
+
+        .visual_con_wrap>.inner>.txt_wrap>.txt {
+            font-size: 16px;
+            text-align: right;
+            color: white;
+            overflow: hidden;
+        }
+
+        .txt_wrap .txt>strong {
+            font-size: 26px;
+        }
+
+        /* Main - 지속가능전략 */
+        .esg_rework .tit_wrap>.txt {
+            display: block;
+            height: auto;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 150px;
+            font-weight: 600;
+            letter-spacing: 37.5px;
+            color: #FFED00;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+            text-align: center;
+        }
+
+        .esg_rework .inner .tit_wrap .desc .color {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 46px;
+            color: var(--color-ottogi-blue);
+        }
+
+        .esg_rework .inner .tit_wrap .desc span {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 46px;
+        }
+
+        .rework_list {
+            min-width: 1000px;
+            display: flex;
+            gap: 30px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 50px auto;
+        }
+
+        .rework_list>li {
+            width: 31%;
+            padding: 40px 30px 30px;
+            box-sizing: border-box;
+            border-radius: 30px;
+        }
+
+        .rework_list li.odd {
+            background-color: #FFED00;
+        }
+
+        .rework_list li.even {
+            background-color: #FFFC29
+        }
+
+        .odd>.tit,
+        .even>.tit {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 34px;
+            margin-bottom: 8px;
+        }
+
+        .tit em,
+        .tit em {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            line-height: 56px;
+            letter-spacing: -1.44px;
+            font-style: normal;
+        }
+
+        .rework_list li ul li {
+            font-size: 18px;
+            font-weight: 300;
+            word-break: keep-all;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .rework_list li ul li::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 8px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #000;
+        }
+
+        /* Main - ESG 경영 조직 */
+        .esg_organization .inner .img img {
+            display: block;
+            margin: 50px auto;
+            width: 1000px;
+        }
+
+        /* Main - ESG 등급 */
+        .tbl_wrap>.txt {
+            padding-left: 20px;
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 22px;
+        }
+
+        .tbl_wrap .txt::before {
+            content: '・';
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #000;
+        }
+
+        table {
+            table-layout: fixed;
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        caption {
+            position: absolute;
+            top: -9999px;
+            font-size: 0;
+            height: 0;
+        }
+
+        colgroup col {
+            width: 20%;
+        }
+
+        thead {
+            display: table-header-group;
+            vertical-align: middle;
+            border-color: inherit;
+            border-radius: 15px;
+            border: 0 none !important;
+        }
+
+        thead>tr {
+            font-size: 31px;
+            font-weight: bold;
+        }
+
+        th {
+            padding: 28px;
+            font-size: 20px;
+            background: #FFFBCC;
+        }
+
+        .esg_rating .tbl_wrap table thead tr th:first-child {
+            border-radius: 50px 0 0 50px;
+        }
+
+        .esg_rating .tbl_wrap table thead tr th:last-child {
+            border-radius: 0 50px 50px 0;
+        }
+
+        tbody {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        tbody>tr {
+            border-bottom: 1px solid #E6E6E6;
+        }
+
+        td {
+            padding: 31px 0;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 28px;
+            text-align: center;
+        }
+
+        .sr_only {
+            position: absolute;
+            top: -99999px;
+            font-size: 0;
+            height: 0;
+        }
+
+        /* Footer */
+        .footer_top_container {
+            height: 70px;
+            border-top: 1px solid #c7c7c7;
+            border-bottom: 1px solid #c7c7c7;
+            display: flex;
+            background: #F7F7F7;
+        }
+
+        .footer_top {
+            width: 1200px;
+            margin: auto;
+        }
+
+        .footer_top ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer_top ul li a {
+            font-size: 15px;
+            font-weight: bold;
+            margin-right: 30px;
+            color: #3c3c3c;
+        }
+
+        .f_left {
+            float: left;
+            margin: 8px 0 0 0;
+        }
+
+        .f_right {
+            float: right;
+        }
+
+        .footer_bottom_container {
+            position: relative;
+            max-width: 1200px;
+            margin: auto;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .footer_bottom_container ul {
+            display: flex;
+        }
+
+        .footer_bottom_container ul li p {
+            margin-bottom: 6px;
+        }
+
+        .b_left {
+            margin: 15px 0 0 20px;
+        }
+
+        .b_right {
+            margin: 30px 0 0 25px;
+        }
+
+        .b_last_img {
+            position: absolute;
+            top: 30px;
+            right: 0px;
+        }
+
+        .fixed_area {
+            right: 10px;
+            width: 80px;
+            position: fixed;
+            bottom: 20px;
+            z-index: 200;
+        }
+
+        .btn_top.on {
+            display: block;
+        }
+
+        .btn_top {
+            width: 80px;
+            height: 72px;
+            background: url(/images/common/btn_top_pc.svg) no-repeat 0 0 / 100%;
+            filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+        }
+
+        /* 슬라이드 Fade-in */
+        .showBox {
+            opacity: 0;
+            transform: translateY(10%);
+            transition: all .5s ease-in-out;
+        }
+
+        .showBox.on {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .container {
+            min-width: 1440px
+        }
+    </style>
+</head>
+
+<body style="min-width: 1600px;">
+    <div class="header_wrap">
+        <div class="ottugi_title">
+            <h1>오뚜기</h1>
+            <a href="../index.html">
+                <img src="../images/main/ottugi_logo.svg" alt="">
+            </a>
+        </div>
+        <div class="header_container">
+            <div class="header_all_wrap">
+                <nav class="header_nav">
+                    <ul>
+                        <li><a href="./about.html">회사소개</a>
+                            <ul>
+                                <li><a href="./about.html">회사개요*</a></li>
+                                <li><a href="./business.html">사업소개*</a></li>
+                                <li><a href="./ceo.html">CEO 메세지*</a></li>
+                                <li><a href="./history.html">연혁*</a></li>
+                                <li><a href="./maps.html">오시는길*</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">ESG경영</a>
+                            <ul>
+                                <li><a href="#none">Overview</a></li>
+                                <li><a href="./ESG.html">ESG경영소개*</a></li>
+                                <li><a href="#none">환경</a></li>
+                                <li><a href="#none">사회</a></li>
+                                <li><a href="#none">지배구조</a></li>
+                                <li><a href="#none">사회공헌</a></li>
+                                <li><a href="#none">동반성장</a></li>
+                                <li><a href="#none">보고서및정책</a></li>
+                                <li><a href="#none">ESG Data</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./product.html">제품이야기</a>
+                            <ul>
+                                <li><a href="./product.html">제품정보*</a></li>
+                                <li><a href="./product_new.html">신제품*</a></li>
+                                <li><a href="./recipe.html">인기레시피*</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">브랜드경험</a>
+                            <ul>
+                                <li><a href="#none">Overview</a></li>
+                                <li><a href="#none">공식캐릭터</a></li>
+                                <li><a href="#none">브랜드공간</a></li>
+                                <li><a href="#none">공장견학</a></li>
+                                <li><a href="#none">공모전</a></li>
+                                <li><a href="#none">페스티벌</a></li>
+                                <li><a href="#none">이벤트</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#none">홍보센터</a>
+                            <ul>
+                                <li><a href="./notice.html">공지사항*</a></li>
+                                <li><a href="#none">오뚜기뉴스룸</a></li>
+                                <li><a href="#none">언론보도</a></li>
+                                <li><a href="#none">CF스토리</a></li>
+                                <li><a href="#none">칼럼</a></li>
+                                <li><a href="#none">투자정보</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./customer.html">고객서비스</a>
+                            <ul>
+                                <li><a href="./customer.html">고객의 소리*</a></li>
+                                <li><a href="#none">접수내역조회</a></li>
+                                <li><a href="#none">고객상담 프로세스</a></li>
+                                <li><a href="#none">고객만족활동</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- 랭귀지, 챗봇등 -->
+                <div class="lang_menu_btn">
+                    <a href="#none">
+                        <img src="../images/main/free-icon-menu-3502458.png" alt="">
+                    </a>
+                </div>
+                <div class="lang">
+                    <div class="lang_down">
+                        <a href="#none">KR
+                            <img src="../images/main/lang_down.svg" alt="">
+                        </a>
+                        <div class="lang_list">
+                            <p><a href="#none">KR</a></p>
+                            <p><a href="#none">EN</a></p>
+                        </div>
+                    </div>
+                    <div class="ottugi_search">
+                        <a href="#none"><img src="../images/main/ottugi_search.svg" alt=""></a>
+                    </div>
+                    <div class="ottugi_chat">
+                        <a href="#none"><img src="../images/main/ottugi_chatbot.svg" alt=""></a>
+                    </div>
+                    <div class="ottugi_mall">
+                        <a href="#none"><img src="../images/main/ottugi_mall.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <!-- 반응형 토글 버튼 -->
+            <div class="toggle_btn">
+                <a href="#none">
+                    <img src="../images/main/littlemenu.svg" alt="">
+                </a>
+            </div>
+            <!-- 드롭다운메뉴 배경 -->
+            <div class="nav_bg"></div>
+        </div>
+    </div>
+    <main id="container" class="container">
+        <!-- 배너 -->
+        <section class="esg_intro_visual">
+            <div class="visual_con_wrap">
+                <div class="inner">
+                    <div class="top_wrap">
+                        <h2 class="tit_depth3">ESG경영 소개</h2>
+                        <p class="desc">지속가능한 미래의 ESG 이야기</p>
+                    </div>
+                    <div class="txt_wrap">
+                        <p class="col_yellow">
+                            <span>마음을 담아 미래를 빛내는<br>오뚜기 ESG</span>
+                        </p>
+                        <p class="txt showBox">
+                            <strong>개요 및 비전</strong><br> ‘인류 식생활 향상에 기여하여 행복한 세상을 만든다’는 사명을 바탕으로<br> 건강한 식문화를 함께하는 글로벌
+                            오뚜기가 되기 위해 사업을 추진해 나가고 있습니다. <br> 오뚜기의 지속가능경영 목표는 조직의 안정된 경영과 성장을 바탕으로 고객만족과 사회공헌을 실천하고,
+                            <br> 더 나아가 인류 공동의 발전에 기여하는 것입니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 지속가능전략 -->
+        <section class="esg_rework showBox">
+            <div class="inner">
+                <h2 class="tit_depth4">지속가능 전략</h2>
+                <div class="tit_wrap">
+                    <strong class="txt">REWORK</strong>
+                    <p class="desc"> 오뚜기는 기업 목표와 경영철학, 사업 경영전략을 바탕으로 중장기 방향성을 담은 Next 50년을 위한 지속가능성장 전략, <br>
+                        <span class="color">‘Re-Work, 오뚜기’</span> <span class="br">라는 ESG 전략 방향을 수립하였습니다.</span>
+                    </p>
+                </div>
+                <ul class="rework_list">
+                    <li class="odd">
+                        <div class="tit"><em>R</em><span>esponsible sourcing</span></div>
+                        <ul>
+                            <li>기후변화 시대의 지속가능한 식품 원료 전환</li>
+                        </ul>
+                    </li>
+                    <li class="even">
+                        <div class="tit"><em>E</em><span>nvironmental Action</span></div>
+                        <ul>
+                            <li>온실가스 배출량 감축</li>
+                            <li>재사용&자원순환 기반의 포장재 전환</li>
+                            <li>재활용 가능 자원 증가</li>
+                            <li>버진 플라스틱 저감</li>
+                        </ul>
+                    </li>
+                    <li class="odd">
+                        <div class="tit"><em>W</em><span>ater & Water Minization</span></div>
+                        <ul>
+                            <li>용수 사용량 감축</li>
+                            <li>매립 폐기물 Zero 달성</li>
+                        </ul>
+                    </li>
+                    <li class="even">
+                        <div class="tit"><em>O</em><span>rganizational Restructuring</span></div>
+                        <ul>
+                            <li>지배구조 개편</li>
+                        </ul>
+                    </li>
+                    <li class="odd">
+                        <div class="tit"><em>R</em><span>elationship with Customer and Suppliers</span></div>
+                        <ul>
+                            <li>안전한 온라인 소비 기반</li>
+                            <li>공급망 지속가능성 확보</li>
+                            <li>인류 식생활 향상을 위한 다양한 기여 활동 지속</li>
+                        </ul>
+                    </li>
+                    <li class="even">
+                        <div class="tit"><em>K</em><span>eeping Improving</span></div>
+                        <ul>
+                            <li>건강한 지배구조를 통한 지속가능한 개선 활동</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- 경영조직 -->
+        <section class="esg_organization showBox">
+            <div class="inner">
+                <h2 class="tit_depth4">ESG 경영 조직</h2>
+                <p class="desc"> 오뚜기는 ESG위원회를 신설하고 <span class="br">ESG 전담 조직을 운영하여,</span> 체계적인 ESG 경영 체계를 구축해 나가고
+                    있습니다. </p>
+                <div class="img">
+                    <img src="/images/esg/img_organization.png" class="img_pc" alt="조직도">
+                    <ul class="sr_only">
+                        <li>이사회 <ul>
+                                <li>ESG위원회</li>
+                            </ul>
+                        </li>
+                        <li>대표이사 <ul>
+                                <li>운영위원회</li>
+                                <li>ESG추진팀 <ul>
+                                        <li>ESG워킹그룹(환경,사회,지배구조 실무부서) <ul>
+                                                <li>E. 환경 <ul>
+                                                        <li>공장</li>
+                                                        <li>조달실</li>
+                                                        <li>환경안전팀</li>
+                                                        <li>연구소</li>
+                                                    </ul>
+                                                </li>
+                                                <li>S. 사회 <ul>
+                                                        <li>품질보증실</li>
+                                                        <li>홍보실</li>
+                                                        <li>환경안전팀</li>
+                                                        <li>인사팀</li>
+                                                    </ul>
+                                                </li>
+                                                <li>G. 지배구조 <ul>
+                                                        <li>법무팀</li>
+                                                        <li>내부회계팀</li>
+                                                        <li>재경팀</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>ESG TFT(오뚜기 및 관계사 임직원)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- ESG 등급 -->
+        <section class="esg_rating showBox">
+            <div class="inner">
+                <h2 class="tit_depth4">ESG 등급</h2>
+                <p class="desc"> 오뚜기는 환경 보존, 준법 및 윤리 경영, <span class="br">투명한 지배구조를 통해 지속적으로</span> 성장하는 기업이 되도록
+                    노력하겠습니다. </p>
+                <div class="tbl_wrap">
+                    <table>
+                        <caption>ESG 등급</caption>
+                        <colgroup>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">연도</th>
+                                <th scope="col">통합<span class="br">등급</span></th>
+                                <th scope="col">E. <span class="br">환경</span></th>
+                                <th scope="col">S. <span class="br">사회</span></th>
+                                <th scope="col">G. <span class="br">지배구조</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2023년</td>
+                                <td>B+</td>
+                                <td>B+</td>
+                                <td>A</td>
+                                <td>B+</td>
+                            </tr>
+                            <tr>
+                                <td>2022년</td>
+                                <td>C</td>
+                                <td>C</td>
+                                <td>B+</td>
+                                <td>C</td>
+                            </tr>
+                            <tr>
+                                <td>2021년</td>
+                                <td>A</td>
+                                <td>B+</td>
+                                <td>A+</td>
+                                <td>B+</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="txt">한국ESG기준원 (KCGS)평가결과</p>
+                </div>
+            </div>
+        </section>
+        <div class="fixed_area">
+            <a href="#" class="btn_top on">
+                <span class="sr_only">상단으로 이동하기</span>
+            </a>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer_wrap">
+            <div class="footer_top_container">
+                <div class="footer_top">
+                    <span class="f_left">
+                        <ul>
+                            <li><a href="#none"><strong>개인정보처리방침</strong></a></li>
+                            <li><a href="#none">고객상담</a></li>
+                            <li><a href="#none">찾아오시는 길</a></li>
+                            <li><a href="#none">오뚜기몰</a></li>
+                            <li><a href="#none">고객상담 챗봇</a></li>
+                        </ul>
+                    </span>
+                    <span class="f_right">
+                        <ul>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer1.png" alt="">
+                                </a></li>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer2.png" alt="">
+                                </a></li>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer3.png" alt="">
+                                </a></li>
+                            <li><a href="#none">
+                                    <img src="../images/main/footer4.png" alt="">
+                                </a></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+
+            <div class="footer_bottom_wrap">
+                <div class="footer_bottom_container">
+                    <ul>
+                        <li class="b_left"><img src="../images/main/f_logo.jpg" alt=""></li>
+                        <li class="b_right">
+                            <p>(주)오뚜기 | 사업자등록번호 : 138-81-03238 | 대표이사 황성만 |</p>
+                            <p>주소 (14060) 경기도 안양시 동안구 흥안대로 405 (평촌동 160)오뚜기 고객상담실 : 080-024-2311</p>
+                            <p>오뚜기라면 고객상담실 : 080-088-1212 (월~금 08:30~17:00)</p>
+                            <br>
+                            <p>Copyright ⓒ OTTOGI CORPORATION.,Ltd All Rights Reserved.</p>
+                        </li>
+                    </ul>
+                    <div class="b_last_img">
+                        <img src="../images/main/footer_b_img1.gif" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const showBox = document.querySelectorAll('.showBox');
+        const screenH = window.innerHeight / 3 * 2;
+        const retVal = ele => ele.getBoundingClientRect().top;
+
+        const showTit = x => {
+            let xval = retVal(x);
+            if (xval < screenH && xval > 0) {
+                x.classList.add("on")
+            }
+        };
+        window.addEventListener("scroll", () => {
+            for (let x of showBox) showTit(x)
+        })
+
+        var btnTop = document.querySelector('.btn_top');
+
+        window.addEventListener("scroll", function () {
+            var scrollY = window.scrollY || document.documentElement.scrollTop;
+
+            if (scrollY > 180) {
+                btnTop.classList.add("on");
+            } else {
+                btnTop.classList.remove("on");
+            }
+        });
+    </script>
+</body>
+
+</html>

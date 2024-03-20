@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Lato:wght@300;400;700;900&family=Noto+Sans+KR&family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@300&display=swap');
+
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: 'Nanum Gothic', sans-serif;
+   /* font-family: 'Roboto Mono', monospace; */
+   scroll-behavior: smooth;
+}
+
+.hide {
+   position: absolute;
+   width: 0 !important;
+   height: 0 !important;
+   overflow: hidden;
+   margin: -1px;
+   text-indent: -9999px;
+   border: 0 none !important
+}
+
+div {
+   display: block;
+}
+
+a {
+   text-decoration: none;
+   color: black;
+}
+
+ul,
+li {
+   list-style: none;
+}
+
+/* 헤더 부분 */
+.header_nav>ul>li>a {
+   text-decoration: none;
+   color: black;
+   font-weight: 600;
+   font-size: 18px;
+   transition: all ease-in 0.3s;
+}
+
+.header_nav>ul>li>a:hover {
+   color: #DF2D32;
+}
+
+.header_nav>ul>li>ul>li>a {
+   text-decoration: none;
+   color: rgb(82, 82, 82);
+   font-size: 15px;
+}
+
+.header_nav>ul>li>ul>li>a:hover {
+   color: #DC2F34;
+   font-weight: bold;
+   border-bottom: 2px solid #DC2F34;
+}
+
+.header_wrap {
+   width: 100%;
+   position: relative;
+   height: 180px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background: url(../images/main/wave-haikei.svg);
+}
+
+.header_container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
+   padding-right: 60px;
+   /* background: red; */
+}
+
+.ottugi_title {
+   margin-left: 60px;
+}
+
+.ottugi_title h1 {
+   text-indent: -9999px;
+}
+
+.ottugi_title img {
+   width: 70px;
+}
+
+.header_all_wrap {
+   position: relative;
+}
+
+.header_nav>ul {
+   height: 80px;
+   display: flex;
+   margin: 50px 0 0 0;
+   justify-content: space-between;
+   align-items: center;
+   /* background: blue; */
+}
+
+.header_nav>ul>li {
+   font-size: 20px;
+   /* height: 60px; */
+   line-height: 40px;
+   padding-right: 60px;
+   /* background: green; */
+}
+
+.header_nav ul ul {
+   position: absolute;
+   top: 110px;
+   height: 460px;
+   display: none;
+   /* background: linear-gradient(0deg, rgba(150, 152, 124, 1) 0%, rgba(255, 242, 0, 1) 46%, rgba(254, 241, 0, 1) 99%); */
+   z-index: 4100;
+}
+
+.lang_menu_btn {
+   position: absolute;
+   top: 75px;
+   right: -50px;
+}
+
+.lang_menu_btn img {
+   width: 30px;
+}
+
+/* 토글버튼 */
+.toggle_btn {
+   display: none;
+}
+
+.lang {
+   position: absolute;
+   background: #fff;
+   text-align: center;
+   padding: 5px;
+   top: 110px;
+   right: -100px;
+   display: none;
+   border: 1px solid #b8b8b8;
+   border-radius: 10px;
+   z-index: 9999;
+}
+
+.lang_down a {
+   font-weight: bold;
+   font-size: 20px;
+}
+
+.lang_list {
+   position: absolute;
+   background: #dbdbdb;
+   top: 0px;
+   right: -55px;
+   height: 90px;
+   padding: 10px;
+   display: none;
+   border: 1px solid #b8b8b8;
+   border-radius: 10px;
+   z-index: 4000;
+}
+
+.lang_list p {
+   margin-bottom: 5px;
+}
+
+.lang_list p:hover {
+   font-weight: bold;
+}
+
+.lang_down,
+.ottugi_search,
+.ottugi_chat,
+.ottugi_mall {
+   padding: 8px;
+}
+
+.ottugi_mall {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 5px;
+}
+
+.ottugi_mall img {
+   width: 95px;
+}
+
+.nav_bg {
+   position: absolute;
+   top: 170px;
+   left: 0;
+   width: 100%;
+   height: 450px;
+   background: linear-gradient(0deg, rgba(150, 152, 124, 1) 0%, rgba(255, 242, 0, 1) 46%, rgba(254, 241, 0, 1) 99%);
+   display: none;
+   z-index: 4000;
+}
+
+
+/* 오시는길 */
+.maps_top {
+   padding: 30px 0 50px 0;
+}
+
+.maps_top h2 {
+   font-size: 44px;
+   margin: 40px 0 20px 0;
+}
+
+.maps_top p {
+   font-size: 20px;
+}
+
+.maps_top h2, .maps_top p{
+   font-weight: bold;
+}
+
+.maps_wrap {
+   background: #fff;
+   padding: 20px 0;
+}
+
+.maps_container {
+   width: 90%;
+   margin: auto;
+}
+
+.maps_title {
+   width: 40%;
+   margin-left: 180px;
+}
+
+.maps_title ul {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.maps_title li {
+   list-style: none;
+   padding: 10px 15px;
+   cursor: pointer;
+   text-align: center;
+   font-size: 26px;
+   font-weight: bold;
+   border-bottom: 3px solid #fff;
+}
+
+.maps_title li.on {
+   color: #DF3232;
+   border-bottom: 3px solid #DF3232;
+}
+
+.maps_title_wrap {
+   text-align: center;
+}
+
+.maps_top {
+   margin-bottom: 40px;
+}
+
+.maps_cont {
+   clear: both;
+   padding: 30px 150px;
+   border-radius: 15px;
+}
+
+.maps_img {
+   display: none;
+}
+
+.maps_cont div.on {
+   display: block;
+}
+
+.maps_section_wrap {
+   height: 630px;
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   padding: 20px 30px;
+   /* background: green; */
+}
+
+.area_main {
+   font-size: 22px;
+}
+
+.maps_content {
+   margin-bottom: 20px;
+   padding: 10px 250px 10px 30px;
+   border: 3px solid #b3b3b3;
+   border-radius: 20px;
+}
+
+.maps_content:hover{
+   border: 3px solid #DF3232;
+}
+
+.maps_content a span {
+   font-weight: bold;
+}
+
+.maps_content p {
+   margin: 10px 0;
+}
+
+
+
+
+/* 푸터 */
+.footer_top_container {
+   height: 70px;
+   border-top: 1px solid #c7c7c7;
+   border-bottom: 1px solid #c7c7c7;
+   display: flex;
+   background: #F7F7F7;
+   /* justify-content: space-between;
+   align-items: center; */
+}
+
+.footer_top {
+   width: 1200px;
+   margin: auto;
+}
+
+.footer_top ul {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.footer_top ul li a {
+   font-size: 15px;
+   font-weight: bold;
+   margin-right: 30px;
+   color: #3c3c3c;
+}
+
+.f_left {
+   float: left;
+   margin: 8px 0 0 0;
+}
+
+.f_right {
+   float: right;
+}
+
+.footer_bottom_container {
+   position: relative;
+   max-width: 1200px;
+   margin: auto;
+   font-size: 13px;
+   font-weight: 400;
+}
+
+.footer_bottom_container ul {
+   display: flex;
+}
+
+.footer_bottom_container ul li p {
+   margin-bottom: 6px;
+}
+
+.b_left {
+   margin: 15px 0 0 20px;
+}
+
+.b_right {
+   margin: 30px 0 90px 25px;
+}
+
+.b_last_img {
+   position: absolute;
+   top: 30px;
+   right: 0px;
+}
+
+/* Top button */
+.fixed_area {
+   right: 10px;
+   width: 80px;
+   position: fixed;
+   bottom: 20px;
+   z-index: 200;
+ }
+ 
+ .btn_top.on {
+   display: block;
+ }
+ 
+ .btn_top {
+   width: 80px;
+   height: 72px;
+   background: url(/images/common/btn_top_pc.svg) no-repeat 0 0 / 100%;
+   filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+ }
+ .sr_only {
+   position: absolute;
+   top: -99999px;
+   font-size: 0;
+   height: 0;
+ }

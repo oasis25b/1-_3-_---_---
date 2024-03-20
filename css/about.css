@@ -1,0 +1,399 @@
+/* common */
+html,
+body {
+  font-family: "Nanum Gothic", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* 회사 개요 */
+.cont-wrap {
+  margin: 0 0 auto 0;
+}
+
+.cont-wrap .introUI li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 25px 0;
+}
+
+.cont.wrap.introUI li .img-txt {
+  box-sizing: border-box;
+}
+
+.cont-wrap .introUI li:first-child {
+  display: block;
+}
+
+.cont-wrap .introUI li:first-child .about-img {
+  margin: 20px 0 30px;
+}
+
+.about-img {
+  position: relative;
+  text-align: center;
+}
+.cont-wrap .introUI li:first-child .about-txt h3 {
+  text-align: center;
+  padding-bottom: 20px;
+  color: #dc2c34;
+  line-height: 55px;
+}
+
+.about-txt h3 {
+  font-size: 40px;
+  margin-bottom: 25px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -1.2px;
+}
+
+.cont-wrap .introUI li:nth-child(2) {
+  margin-top: 50px;
+}
+
+.cont-wrap .introUI li:nth-child(2) .about-txt {
+  width: 600px;
+  /* padding: 20px 0 0 20px; */
+}
+
+.cont-wrap .introUI li:nth-child(2) img {
+  width: 500px;
+}
+
+.cont-wrap .introUI li:nth-child(3) {
+  margin-top: 50px;
+  border-bottom: 1px solid #eee;
+}
+
+.cont-wrap .introUI li:nth-child(3) .about-txt {
+  width: 640px;
+  order: 2;
+  /* padding: 20px 0 0 0; */
+}
+
+.cont-wrap .introUI li:nth-child(3) img {
+  width: 500px;
+}
+
+.about-txt .red {
+  color: #dc2c34;
+  font-size: 16px;
+}
+
+/* 기업 이념 */
+
+.container.ph2 {
+  padding-top: 80px;
+}
+
+.ph2 {
+  text-align: center;
+}
+
+.ph2 img {
+  border-radius: 20px;
+  width: 1100px;
+}
+
+.page-box {
+  height: 50px;
+  font-size: 26px;
+  background: #ffde00;
+  position: relative;
+  top: -5px;
+  right: -50px;
+  width: 1100px;
+  border-radius: 20px;
+}
+
+.ph2 p {
+  position: relative;
+  top: 10px;
+}
+
+.philosophy {
+  padding-top: 150px;
+  padding-bottom: 80px;
+}
+
+.inside {
+  max-width: 1100px;
+  margin: 0 auto;
+  box-sizing: content-box;
+  padding: 0 75px;
+}
+
+.philosophy .item {
+  display: flex;
+  align-items: center;
+}
+
+.philosophy .inside h3 {
+  font-size: 40px;
+  line-height: 56px;
+  letter-spacing: -0.8px;
+  text-align: center;
+}
+
+.philosophy .item.first {
+  padding-top: 50px;
+}
+
+.philosophy .item .tit {
+  font-size: 26px;
+  line-height: 38px;
+}
+
+.philosophy .item .con {
+  max-width: 960px;
+  padding-top: 0;
+  margin: 0 auto;
+}
+
+.philosophy .item .con .txt {
+  padding: 0 170px;
+  position: relative;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 56px;
+  letter-spacing: -0.8px;
+}
+
+.philosophy .inside .item .con .txt::before {
+  content: "[";
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  font-size: 170px;
+  font-weight: 200;
+  color: #e6e6e6;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.txt em {
+  font-weight: 500;
+  color: #dc2c34;
+  font-style: normal;
+}
+
+.philosophy .inside .item .con .txt::after {
+  content: "]";
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  font-size: 170px;
+  font-weight: 200;
+  color: #e6e6e6;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.philosophy .inside .item {
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.philosophy .inside .item .con ul {
+  gap: 60px;
+  display: flex;
+}
+
+.philosophy .inside .item .con ul li {
+  padding: 80px;
+  border-radius: 100px;
+  background: #ffde00;
+}
+
+.philosophy .item .con ul li.icon1::before {
+  background: url(/images/company/ico_company1.svg) no-repeat 0 0 / 100% 100%;
+}
+
+.philosophy .item .con ul li.icon2::before {
+  background: url(/images/company/ico_company2.svg) no-repeat 0 0 / 100% 100%;
+}
+
+.philosophy .item .con ul li.icon3::before {
+  background: url(/images/company/ico_company3.svg) no-repeat 0 0 / 100% 100%;
+}
+
+.philosophy .item .con ul li::before {
+  width: 60px;
+  height: 60px;
+  content: "";
+  display: block;
+  margin: 0 auto;
+}
+
+.philosophy .item .con ul li span {
+  display: block;
+  margin-top: 10px;
+  font-size: 30px;
+  line-height: 46px;
+  letter-spacing: -0.64px;
+}
+
+.philosophy .item:last-child {
+  align-items: center;
+}
+
+/* 메인 이미지 */
+.main {
+  width: 100%;
+  min-width: 1280px;
+  height: 424px;
+  background: url(/images/company/story_visual_banner_pc.jpg) no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  clear: both;
+}
+
+.main h2 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  bottom: 0px;
+  font-size: 45px;
+  color: #222222;
+}
+
+.main p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333333;
+  padding-top: 54px;
+}
+
+.section.no-pad-bot {
+  padding-bottom: 0;
+}
+
+/* 회사개요 회사연혁 제품연혁 */
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0;
+}
+
+.container2 {
+  width: 1200px;
+  margin: auto;
+}
+
+.cnb3 {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.cnb3 ul {
+  display: flex;
+  height: 124px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.cnb3 a.on:hover {
+  color: #dc2c34;
+  border-bottom: 5px solid #dc2c34;
+}
+
+.on {
+  display: block;
+  color: #666;
+  width: 240px;
+  height: 75px;
+  font-size: 18px;
+}
+
+.dep3 {
+  height: 100px;
+  line-height: 50px;
+  border-bottom: 1px solid #e2e2e2;
+  box-sizing: border-box;
+}
+
+.dep3 ul.cnb3 li {
+  width: 33.3333%;
+}
+
+.breadcruma {
+  font-size: 14px;
+  color: #666;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #666;
+}
+
+*,
+::before,
+*:after {
+  box-sizing: inherit;
+}
+
+.breadcrumb::before {
+  content: "/";
+  color: #666666;
+  vertical-align: top;
+  /* display: inline-block; */
+  font-weight: normal;
+  font-size: 14px;
+  margin: 0 3px 0 3px;
+}
+
+.path {
+  height: 80px !important;
+  line-height: 60px;
+}
+/* 
+.btnTop a {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 70px;
+  height: 70px;
+  text-indent: -9999px;
+  display: block;
+  background-color: rgba(28, 56, 99, 0.5);
+  background: url(/images/company/btn_Top.jpg) no-repeat center center;
+  z-index: 3333333333333333333333;
+} */
+
+
+.fixed_area {
+  right: 10px;
+  width: 80px;
+  position: fixed;
+  bottom: 20px;
+  z-index: 200;
+}
+
+.btn_top.on {
+  display: block;
+}
+
+.btn_top {
+  width: 80px;
+  height: 72px;
+  background: url(/images/common/btn_top_pc.svg) no-repeat 0 0 / 100%;
+  filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+}
+.sr_only {
+  position: absolute;
+  top: -99999px;
+  font-size: 0;
+  height: 0;
+}
